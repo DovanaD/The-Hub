@@ -1,11 +1,383 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Meu Site</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE HUB — aprender inglês · rascunho v0.3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --surface:#3F1512;     /* superfície — vermelho profundo (era o azul) */
+    --surface-2:#55201A;   /* painel */
+    --surface-3:#2C0F0C;   /* fundo mais profundo */
+    --orange:#F0803B;      /* laranja vibrante — acento principal */
+    --orange-2:#F7A268;    /* laranja claro p/ realce */
+    --green:#57B571;       /* verde — terceiro acento, complementar ao vermelho */
+    --green-2:#86CF9A;     /* verde claro */
+    --paper:#F1EAD9;       /* cartão */
+    --paper-2:#E8DFC9;     /* cartão empilhado */
+    --ink:#2B1714;         /* tinta sobre papel */
+    --ink-soft:#6A554E;    /* secundário sobre papel */
+    --rule:150,125,115;    /* pauta em cinza-quente (rgb) */
+    --cream:#F2E7D7;       /* texto sobre a superfície */
+    --dim:#CBA398;         /* secundário sobre a superfície */
+    --line:#5E2620;        /* filetes sobre a superfície */
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--surface);color:var(--cream);
+    font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(240,128,59,.13), transparent 40%),
+      radial-gradient(circle at 88% 82%, rgba(87,181,113,.10), transparent 44%);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  .mono{font-family:"Space Mono",monospace;}
+  .label{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);}
+  h1,h2,h3{font-family:"Fraunces",serif;font-weight:500;line-height:1.05;margin:0;}
+  h2{font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:-.01em;}
+  p{margin:0 0 1em;}
+
+  /* ---- topo ---- */
+  header.topbar{position:sticky;top:0;z-index:50;background:rgba(63,21,18,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{font-family:"Fraunces",serif;font-weight:600;font-size:1.3rem;letter-spacing:.02em;}
+  .brand .the{color:var(--orange);}
+  .brand small{font-family:"Space Mono",monospace;font-weight:400;font-size:.6rem;letter-spacing:.16em;color:var(--dim);display:block;margin-top:-3px;}
+  .nav{display:flex;gap:26px;}
+  .nav a{color:var(--dim);text-decoration:none;font-size:.82rem;letter-spacing:.02em;transition:color .2s;}
+  .nav a:hover,.nav a:focus-visible{color:var(--orange);}
+  @media(max-width:760px){.nav{display:none;}}
+
+  /* ================= HERO ================= */
+  .hero{padding:88px 0 64px;position:relative;overflow:hidden;}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
+  .hero-eyebrow{margin-bottom:26px;}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.6rem);font-weight:500;letter-spacing:-.02em;margin-bottom:26px;}
+  .hero h1 em{font-style:italic;color:var(--orange-2);}
+  .hero .lede{font-size:1.12rem;color:#E4D4C7;max-width:47ch;}
+  .hero .lede strong{color:var(--cream);font-weight:600;}
+  @media(max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:40px;}.hero{padding:56px 0 40px;}}
+
+  /* ---- ficha (assinatura visual) ---- */
+  .card{
+    background:var(--paper);color:var(--ink);border-radius:3px;
+    box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 24px 46px -22px rgba(0,0,0,.6),0 3px 8px rgba(0,0,0,.28);
+    background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 30px,rgba(var(--rule),.5) 30px,rgba(var(--rule),.5) 31px);
+    position:relative;padding:26px 30px 30px 54px;
+  }
+  .card::before{content:"";position:absolute;left:36px;top:0;bottom:0;width:1.5px;background:var(--orange);opacity:.75;}
+  .card .cardnum{font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#9a7b5c;margin-bottom:14px;display:block;}
+  .card h3{color:var(--ink);}
+  .hero-card{transform:rotate(2.4deg);}
+  .hero-card .term{font-family:"Fraunces",serif;font-size:1.7rem;font-weight:600;margin:2px 0 4px;}
+  .hero-card .pron{font-family:"Space Mono",monospace;font-size:.82rem;color:var(--ink-soft);margin-bottom:14px;}
+  .hero-card .defn{font-size:.98rem;color:#42322f;line-height:1.55;}
+  .hero-card .stamp{position:absolute;right:16px;bottom:14px;font-family:"Space Mono",monospace;font-size:.6rem;letter-spacing:.12em;color:#2f8a52;border:1.5px solid var(--green);border-radius:3px;padding:3px 7px;transform:rotate(-6deg);opacity:.9;}
+
+  /* ================= seções ================= */
+  section.band{padding:76px 0;border-top:1px solid var(--line);}
+  .sec-head{margin-bottom:38px;max-width:62ch;}
+  .sec-head .label{display:block;margin-bottom:16px;}
+  .sec-head .label b{color:var(--orange);font-weight:400;}
+  .sec-head p.intro{color:#E0CDC0;margin-top:14px;font-size:1.05rem;}
+  .sec-head p.intro .mono{color:var(--orange-2);}
+
+  /* ---- professor ---- */
+  .prof{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start;}
+  @media(max-width:880px){.prof{grid-template-columns:1fr;gap:32px;}}
+  .prof-card .name{font-family:"Fraunces",serif;font-size:1.9rem;font-weight:600;line-height:1.05;margin:2px 0 6px;}
+  .prof-card .vitals{font-family:"Space Mono",monospace;font-size:.78rem;color:var(--ink-soft);margin-bottom:18px;}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .tag{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.04em;background:rgba(87,181,113,.16);color:#2c6e46;border:1px solid rgba(87,181,113,.55);border-radius:999px;padding:4px 11px;}
+  .prof-bio p{color:#E4D2C6;}
+  .prof-bio p:first-child{font-size:1.12rem;color:var(--cream);}
+  .note{font-family:"Space Mono",monospace;font-size:.7rem;color:var(--dim);opacity:.9;}
+
+  /* ---- método ---- */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:720px){.compare{grid-template-columns:1fr;}}
+  .stack{background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:26px 26px 10px;}
+  .stack.here{border-color:rgba(240,128,59,.65);box-shadow:0 0 0 1px rgba(240,128,59,.2);}
+  .stack .label{margin-bottom:18px;}
+  .stack.here .label{color:var(--orange);}
+  .stack ul{list-style:none;margin:0;padding:0;}
+  .stack li{padding:12px 0;border-top:1px solid var(--line);font-size:.98rem;color:#EAD9CC;}
+  .stack li:first-child{border-top:none;}
+  .stack.plain li{color:#BB958A;}
+  .stack li b{color:var(--cream);font-weight:600;}
+
+  /* ---- de aprendiz para aprendiz ---- */
+  .letters{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:60px;}
+  @media(max-width:760px){.letters{grid-template-columns:1fr;}}
+  .letter{background:var(--paper);color:var(--ink);border-radius:3px;padding:28px 30px 24px;position:relative;overflow:hidden;
+    box-shadow:0 16px 36px -22px rgba(0,0,0,.55),0 2px 6px rgba(0,0,0,.2);}
+  .letter::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--orange);}
+  .letter.alt::before{background:var(--green);}
+  .letter .mark{font-family:"Fraunces",serif;font-size:2.6rem;line-height:.5;color:var(--orange);opacity:.4;}
+  .letter.alt .mark{color:#2f8a52;opacity:.5;}
+  .letter .body{font-family:"Fraunces",serif;font-size:1.14rem;font-style:italic;line-height:1.5;color:#2e211e;margin:6px 0 18px;}
+  .letter .sign{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.02em;color:var(--ink-soft);}
+  .letter .sign b{color:#b0571f;font-weight:700;}
+  .letter.alt .sign b{color:#2c6e46;}
+
+  .subhead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
+  .subhead h3{font-size:1.4rem;color:var(--cream);}
+  .subhead .hint{font-family:"Space Mono",monospace;font-size:.72rem;color:var(--dim);}
+
+  /* ---- flashcards flip ---- */
+  .fcgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:880px){.fcgrid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.fcgrid{grid-template-columns:1fr;}}
+  .fc{appearance:none;border:none;background:none;padding:0;cursor:pointer;perspective:1200px;min-height:196px;text-align:left;font:inherit;color:inherit;display:block;width:100%;}
+  .fc:focus-visible{outline:2px solid var(--orange);outline-offset:4px;border-radius:5px;}
+  .fc-inner{position:relative;width:100%;height:100%;min-height:196px;transition:transform .5s cubic-bezier(.4,.1,.2,1);transform-style:preserve-3d;}
+  .fc.is-flipped .fc-inner{transform:rotateY(180deg);}
+  .fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--paper);color:var(--ink);border-radius:3px;padding:20px 22px 20px 40px;
+    box-shadow:0 16px 34px -22px rgba(0,0,0,.55),0 2px 6px rgba(0,0,0,.2);
+    background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 26px,rgba(var(--rule),.45) 26px,rgba(var(--rule),.45) 27px);display:flex;flex-direction:column;}
+  .fc-face::before{content:"";position:absolute;left:26px;top:0;bottom:0;width:1.5px;background:var(--orange);opacity:.6;}
+  .fc-front .disc{font-family:"Space Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#2c7a4a;margin-bottom:auto;}
+  .fc-front .term{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:600;color:var(--ink);margin:8px 0 2px;}
+  .fc-front .flip-hint{font-family:"Space Mono",monospace;font-size:.6rem;color:var(--ink-soft);letter-spacing:.1em;margin-top:12px;}
+  .fc-back{transform:rotateY(180deg);}
+  .fc-back .defn{font-size:.94rem;color:#352725;line-height:1.5;margin-bottom:auto;}
+  .fc-back .by{font-family:"Space Mono",monospace;font-size:.64rem;color:var(--ink-soft);margin-top:12px;}
+  .fc-add{min-height:196px;border:1.5px dashed #86463c;border-radius:3px;background:transparent;color:var(--dim);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;font:inherit;transition:border-color .2s,color .2s;}
+  .fc-add:hover,.fc-add:focus-visible{border-color:var(--green);color:var(--green-2);outline:none;}
+  .fc-add .plus{font-family:"Fraunces",serif;font-size:2rem;line-height:1;}
+  .fc-add span.t{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.08em;}
+
+  /* ---- rodapé ---- */
+  footer{padding:52px 0 64px;border-top:1px solid var(--line);background:var(--surface-3);}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:end;}
+  footer .colofao{font-family:"Space Mono",monospace;font-size:.72rem;color:var(--dim);line-height:1.9;}
+  footer .big{font-family:"Fraunces",serif;font-size:1.7rem;color:var(--cream);max-width:22ch;line-height:1.15;}
+  footer .big em{font-style:italic;color:var(--orange);}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1;transform:none;transition:none;}.fc-inner{transition:none;}}
+</style>
 </head>
 <body>
-  <h1>Olá, mundo</h1>
-  <p>Primeiro site no ar.</p>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="the">THE</span> HUB<small>APRENDER INGLÊS · RASCUNHO</small></div>
+    <nav class="nav">
+      <a href="#professor">O professor</a>
+      <a href="#projeto">A ideia</a>
+      <a href="#metodo">O método</a>
+      <a href="#aprendizes">De aprendiz p/ aprendiz</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-eyebrow label reveal">THE HUB · aprender inglês · est. 2026 · [cidade]</div>
+      <h1 class="reveal">Uma língua para <em>ler o mundo inteiro</em>, não uma lista para decorar.</h1>
+      <p class="lede reveal">Um ponto de encontro para quem estuda — ou já estudou — comigo, e para quem nunca pisou na minha aula. As aulas atravessam <strong>humanas, exatas e biológicas</strong>: o inglês tratado como sistema de leitura, e não como sequência de exercícios. Aqui fica o que a gente constrói junto.</p>
+    </div>
+    <div class="reveal">
+      <div class="card hero-card">
+        <span class="cardnum">Verbete de exemplo · nº 0000</span>
+        <div class="term">scaffolding</div>
+        <div class="pron mono">/ˈskæf.əl.dɪŋ/ · subst.</div>
+        <div class="defn">Na engenharia, a estrutura provisória que sustenta a obra até ela se firmar. Na pedagogia (Bruner), o apoio que se retira à medida que o aluno assume a tarefa. A mesma palavra, dois campos — é assim que a gente aprende aqui.</div>
+        <span class="stamp">FICHADO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROFESSOR ================= -->
+<section class="band" id="professor">
+  <div class="wrap">
+    <div class="prof">
+      <div class="reveal">
+        <div class="card prof-card">
+          <span class="cardnum">Ficha 001 · O professor</span>
+          <div class="name">Prof. [Nome Sobrenome]</div>
+          <div class="vitals">(nasc. [ano, cidade])</div>
+          <div class="tags">
+            <span class="tag">Linguística aplicada</span>
+            <span class="tag">Literatura</span>
+            <span class="tag">História da ciência</span>
+            <span class="tag">Estatística</span>
+          </div>
+        </div>
+      </div>
+      <div class="prof-bio reveal">
+        <p>[Texto de exemplo — troque pelo seu.] Dou aula de inglês há [X] anos e nunca consegui tratar a língua como um assunto isolado.</p>
+        <p>Minha formação passa por [áreas]; o que me interessa é usar o inglês como ferramenta para ler biologia, estatística, história e poesia no mesmo movimento. A gramática entra a serviço do texto, nunca o contrário.</p>
+        <p>Este site reúne o material das aulas, a lógica do projeto e — a parte que mais importa — o que os próprios aprendizes deixam registrado aqui.</p>
+        <p class="note">↳ campos entre [colchetes] são para você preencher.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= A IDEIA ================= -->
+<section class="band" id="projeto">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Ficha 002 · <b>A ideia</b></span>
+      <h2>Um acervo que não se apaga no fim do semestre.</h2>
+      <p class="intro">A maioria dos cursos trata cada turma como um ciclo fechado: começa, termina, some. THE HUB faz o contrário — é um acervo que permanece. Cada verbete, cada leitura, cada recado deixado por um aprendiz vira patrimônio comum dos próximos.</p>
+      <p class="intro">A arquitetura é emprestada do <span class="mono">Zettelkasten</span> de Niklas Luhmann (nasc. 1927, Lüneburg — m. 1998, Oerlinghausen): um fichário em que cada cartão remete a outros, e o conhecimento cresce pelas conexões, não pelo acúmulo. Um <em>hub</em>, no sentido literal — um centro por onde as ligações passam.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= O MÉTODO ================= -->
+<section class="band" id="metodo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Ficha 003 · <b>O método</b></span>
+      <h2>Por que não é uma aula comum de inglês.</h2>
+    </div>
+    <div class="compare">
+      <div class="stack plain reveal">
+        <span class="label">A aula de sempre</span>
+        <ul>
+          <li>Listas de vocabulário descoladas de qualquer texto.</li>
+          <li>Gramática como fim em si mesma.</li>
+          <li>Um único registro: o do livro didático.</li>
+          <li>O material some quando a turma acaba.</li>
+          <li>O aluno consome; nunca produz o acervo.</li>
+        </ul>
+      </div>
+      <div class="stack here reveal">
+        <span class="label">Aqui</span>
+        <ul>
+          <li>Palavras entram <b>dentro</b> de textos reais — de artigo científico a poema.</li>
+          <li>Gramática <b>a serviço</b> da leitura, não o contrário.</li>
+          <li>Cruzamento constante entre <b>humanas, STEM e biológicas</b>.</li>
+          <li>Um <b>acervo cumulativo</b> que atravessa as turmas.</li>
+          <li>O aprendiz <b>fabrica</b> fichas e recados que ficam para os próximos.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DE APRENDIZ PARA APRENDIZ ================= -->
+<section class="band" id="aprendizes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Ficha 004 · <b>De aprendiz para aprendiz</b></span>
+      <h2>Recados de quem está no meio do caminho.</h2>
+      <p class="intro">Não são depoimentos sobre o professor. São mensagens de aprendizes — meus alunos ou não — para outros aprendizes: o que trava, o que destrava, o que ninguém avisa antes. Deixe o seu quando quiser.</p>
+    </div>
+
+    <!-- recados -->
+    <div class="letters">
+      <div class="letter reveal">
+        <div class="mark">&ldquo;</div>
+        <p class="body">Eu pensei em desistir umas três vezes no primeiro mês. O que me segurou não foi disciplina — foi entender que travar numa frase não é fracasso, é o cérebro remontando. Se você está aí, quase saindo: fica mais um pouco.</p>
+        <div class="sign">— <b>L.</b>, aprendiz · 2024</div>
+      </div>
+      <div class="letter alt reveal">
+        <div class="mark">&ldquo;</div>
+        <p class="body">Realmente aprender outra língua me mostrou o tamanho da minha rigidez cognitiva. Eu exigia que cada palavra tivesse uma tradução exata, um encaixe. Não tem. No dia em que parei de exigir isso, tudo destravou — e não só o inglês.</p>
+        <div class="sign">— <b>aprendiz autodidata</b> · 2023</div>
+      </div>
+      <div class="letter alt reveal">
+        <div class="mark">&ldquo;</div>
+        <p class="body">Ninguém me avisou que aprender inglês ia mexer em como eu penso em português também. Comecei a reparar em coisas da minha própria língua que eu nunca tinha visto. É estranho e bom ao mesmo tempo.</p>
+        <div class="sign">— <b>M. C.</b>, aprendiz · 2025</div>
+      </div>
+      <div class="letter reveal">
+        <div class="mark">&ldquo;</div>
+        <p class="body">Vim das exatas achando que língua era decoreba. É o oposto: é o sistema mais vivo que já estudei, cheio de exceções que têm lógica quando você olha de perto. Trata como problema interessante, não como obrigação.</p>
+        <div class="sign">— <b>R.</b>, aprendiz (nunca fiz aula com o prof) · 2025</div>
+      </div>
+    </div>
+
+    <!-- flashcards -->
+    <div class="subhead reveal">
+      <h3>Fichas feitas por aprendizes</h3>
+      <span class="hint">clique para virar · [exemplos]</span>
+    </div>
+    <div class="fcgrid">
+
+      <button class="fc reveal" aria-pressed="false">
+        <span class="fc-inner">
+          <span class="fc-face fc-front"><span class="disc">Biologia</span><span class="term">homeostasis</span><span class="flip-hint">virar →</span></span>
+          <span class="fc-face fc-back"><span class="defn">Tendência de um sistema a manter equilíbrio interno estável. Do grego <i>hómoios</i> (semelhante) + <i>stásis</i> (parada). Termo cunhado por Walter Cannon (1871–1945).</span><span class="by">ficha de B. S. · 2024</span></span>
+        </span>
+      </button>
+
+      <button class="fc reveal" aria-pressed="false">
+        <span class="fc-inner">
+          <span class="fc-face fc-front"><span class="disc">Estatística</span><span class="term">skewness</span><span class="flip-hint">virar →</span></span>
+          <span class="fc-face fc-back"><span class="defn">Assimetria de uma distribuição em relação à média. “The data is right-skewed” = a cauda se estende para a direita. Raiz em <i>skew</i>, do nórdico antigo <i>skjuta</i>, atirar de viés.</span><span class="by">ficha de T. M. · 2025</span></span>
+        </span>
+      </button>
+
+      <button class="fc reveal" aria-pressed="false">
+        <span class="fc-inner">
+          <span class="fc-face fc-front"><span class="disc">Literatura</span><span class="term">uncanny</span><span class="flip-hint">virar →</span></span>
+          <span class="fc-face fc-back"><span class="defn">Estranho e familiar ao mesmo tempo. Tradução consagrada do <i>Unheimliche</i> de Freud (1856–1939). Ex.: “There was something uncanny about the empty house.”</span><span class="by">ficha de P. A. · 2023</span></span>
+        </span>
+      </button>
+
+      <button class="fc reveal" aria-pressed="false">
+        <span class="fc-inner">
+          <span class="fc-face fc-front"><span class="disc">Expressão idiomática</span><span class="term">to hedge one's bets</span><span class="flip-hint">virar →</span></span>
+          <span class="fc-face fc-back"><span class="defn">Distribuir risco para não depender de um só resultado — nasce do vocabulário das apostas e migra para finanças (<i>hedge fund</i>). Vale para investimento e para escrita acadêmica cautelosa.</span><span class="by">ficha de C. V. · 2024</span></span>
+        </span>
+      </button>
+
+      <button class="fc reveal" aria-pressed="false">
+        <span class="fc-inner">
+          <span class="fc-face fc-front"><span class="disc">Física · metáfora</span><span class="term">momentum</span><span class="flip-hint">virar →</span></span>
+          <span class="fc-face fc-back"><span class="defn">Na mecânica, massa × velocidade. No uso corrente, o embalo que um processo ganha: “the campaign is gaining momentum.” O termo técnico e o cotidiano compartilham a mesma intuição.</span><span class="by">ficha de R. D. · 2025</span></span>
+        </span>
+      </button>
+
+      <button class="fc-add reveal" type="button" aria-label="Adicionar nova ficha (rascunho, sem função ainda)">
+        <span class="plus">+</span>
+        <span class="t">nova ficha</span>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= RODAPÉ ================= -->
+<footer>
+  <div class="wrap">
+    <div class="big">O acervo cresce <em>a cada aprendiz</em>.</div>
+    <div class="colofao">
+      THE HUB · APRENDER INGLÊS<br>
+      rascunho v0.3 · sketch de estrutura<br>
+      [contato] · [redes] · [inscrição]
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.fc').forEach(function(card){
+    card.addEventListener('click', function(){
+      var flipped = card.classList.toggle('is-flipped');
+      card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+    });
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
 </body>
 </html>
