@@ -121,6 +121,100 @@
       text-transform: uppercase;
       color: var(--ink-soft);
     }
+
+    /* Espaco entre paragrafos das secoes de texto */
+    .about p + p,
+    .room p + p { margin-top: 0.9rem; }
+
+    .about em { font-style: italic; }
+
+    .about-close {
+      margin-top: 1.2rem !important;
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    /* Secao "a sala" - mesmo tratamento visual de "o projeto" */
+    .room {
+      width: 100%;
+      border-top: 1px solid var(--line);
+      padding-top: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Secao "organizador responsavel" */
+    .organizer {
+      width: 100%;
+      border-top: 1px solid var(--line);
+      padding-top: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .org-card {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      margin-bottom: 1.4rem;
+    }
+
+    .org-photo {
+      flex: 0 0 96px;
+      width: 96px;
+      height: 96px;
+      border: 1px solid var(--line);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+    }
+
+    .org-photo-placeholder {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .org-info { flex: 1; min-width: 0; }
+
+    .org-name {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .org-bio {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    .org-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.2rem;
+      padding-top: 0.4rem;
+    }
+
+    .org-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .org-links a:hover {
+      border-color: var(--ink);
+    }
   </style>
 </head>
 <body>
@@ -128,23 +222,33 @@
 
     <div class="symbol-holder">
       <svg viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fluxo ascendente convergente" class="hub-symbol">
-        <g fill="none" stroke="currentColor" stroke-linecap="round" opacity="0.3" stroke-width="1">
-          <path d="M60,160 C82,120 96,70 98.6,34" />
-          <path d="M140,160 C118,120 104,70 101.4,34" />
-          <path d="M98.6,34 C98,28 96.5,22 95,16" />
-          <path d="M101.4,34 C102,28 103.5,22 105,16" />
+        <g fill="none" stroke="currentColor" stroke-linecap="round" opacity="0.28" stroke-width="1">
+          <path d="M52,160 C68,128 90,78 98.4,36" />
+          <path d="M148,160 C132,128 110,78 101.6,36" />
+          <path d="M98.4,36 C97.4,30 94.8,22 92,14" />
+          <path d="M101.6,36 C102.6,30 105.2,22 108,14" />
         </g>
-        <g fill="none" stroke="currentColor" stroke-linecap="round" opacity="0.55" stroke-width="1.3">
-          <path d="M74,160 C88,118 97,68 99.1,33" />
-          <path d="M126,160 C112,118 103,68 100.9,33" />
-          <path d="M99.1,33 C98.6,27 97.4,21 96,15" />
-          <path d="M100.9,33 C101.4,27 102.6,21 104,15" />
+        <g fill="none" stroke="currentColor" stroke-linecap="round" opacity="0.5" stroke-width="1.25">
+          <path d="M68,160 C82,126 96,76 99,35" />
+          <path d="M132,160 C118,126 104,76 101,35" />
+          <path d="M99,35 C98,29 96,21 94,13" />
+          <path d="M101,35 C102,29 104,21 106,13" />
+        </g>
+        <g fill="none" stroke="currentColor" stroke-linecap="round" opacity="0.75" stroke-width="1.45">
+          <path d="M84,160 C92,124 97.5,74 99.4,34" />
+          <path d="M116,160 C108,124 102.5,74 100.6,34" />
+          <path d="M99.4,34 C98.6,28 97,20 95.5,12" />
+          <path d="M100.6,34 C101.4,28 103,20 104.5,12" />
+        </g>
+        <g fill="none" stroke="currentColor" stroke-linecap="round" opacity="1" stroke-width="1.6">
+          <path d="M92,160 C96,122 98.3,72 99.6,33" />
+          <path d="M108,160 C104,122 101.7,72 100.4,33" />
+          <path d="M99.6,33 C98.9,27 97.7,19 96.8,11" />
+          <path d="M100.4,33 C101.1,27 102.3,19 103.2,11" />
         </g>
         <g fill="none" stroke="currentColor" stroke-linecap="round" opacity="1" stroke-width="1.7">
-          <path d="M88,160 C94,116 98,66 99.5,32" />
-          <path d="M112,160 C106,116 102,66 100.5,32" />
-          <path d="M99.5,32 C99.1,26 98.2,20 97,14" />
-          <path d="M100.5,32 C100.9,26 101.8,20 103,14" />
+          <path d="M100,160 L100,33" />
+          <path d="M100,33 L100,10" />
         </g>
       </svg>
     </div>
@@ -161,15 +265,15 @@
 
     <section class="about">
       <h2 class="section-label">o projeto</h2>
-      <p>
-        THE HUB é um ponto de encontro. Um espaço onde pessoas se
-        atravessam, deixam algo e seguem. A sala é o coração do projeto --
-        pensada para ser autoexplicativa: você entra e entende.
-      </p>
+      <p>Não falta método para aprender uma nova língua. Métodos existem muitos, e muitos bons.</p>
+      <p>Mas implementar é outra história. Implementar e manter a constância <em>ainda</em> outra história.</p>
+      <p>Aqui a gente já percebeu que o que falta não é nem tempo. 10 minutos por dia seria o suficiente para avançar. O que falta mesmo é <em>a energia extra</em>.</p>
+      <p>E isso a gente resolve.</p>
+      <p class="about-close">Nós fazemos juntos.</p>
     </section>
 
     <section class="tips">
-      <h2 class="section-label">dicas de alunos para alunos</h2>
+      <h2 class="section-label">a gente se apoia</h2>
       <ul class="tip-list">
         <li class="tip">
           <p class="tip-text">Comece o trabalho no dia em que ele é passado, nem que seja só lendo o enunciado. O custo de entrada some.</p>
@@ -183,6 +287,33 @@
           <p class="tip-text">Pergunte cedo. A pergunta que te envergonha hoje é a mesma que dez colegas estão engolindo.</p>
           <span class="tip-by">-- anônimo</span>
         </li>
+      </ul>
+    </section>
+
+    <section class="room">
+      <h2 class="section-label">a sala</h2>
+      <p>A sala, um lugar de estar, é o nosso espaço. Eu comecei a organizar a sala com meus 15 anos de experiência dando aulas.</p>
+      <p>Mas cada um de nós aprendizes que entramos podemos mudar algo, pensando em dar nossa cara, e em favorecer os outros aprendizes. O jeito que você vai ver a sala é como ela ficou desde que o último aprendiz mudou ela.</p>
+      <p>THE HUB é um lugar onde aprendizes do mundo inteiro se encontram com um objetivo comum: aprender uma língua nova. E com esse objetivo comum, criamos juntos a energia extra para uma nova possibilidade.</p>
+    </section>
+
+    <section class="organizer">
+      <h2 class="section-label">organizador responsável</h2>
+      <div class="org-card">
+        <div class="org-photo" aria-label="Foto de Matheus Veras Prado">
+          <span class="org-photo-placeholder">foto</span>
+        </div>
+        <div class="org-info">
+          <p class="org-name">Matheus Veras Prado</p>
+          <p class="org-bio">[descrição]</p>
+        </div>
+      </div>
+      <ul class="org-links" aria-label="Redes">
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+        <li><a href="#" aria-label="YouTube">YouTube</a></li>
+        <li><a href="#" aria-label="TikTok">TikTok</a></li>
+        <li><a href="#" aria-label="WhatsApp">WhatsApp</a></li>
       </ul>
     </section>
 
