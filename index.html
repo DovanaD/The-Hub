@@ -1,266 +1,307 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THE HUB -- onde humanos convergem</title>
-  <meta name="description" content="THE HUB -- onde humanos convergem." />
-  <style>
-    :root {
-      --bg: #f4f1ea;
-      --ink: #1c1a17;
-      --ink-soft: #57534c;
-      --line: #d8d2c6;
-      --accent: #2b2824;
-      --max: 640px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-text-size-adjust: 100%; }
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "Georgia", "Times New Roman", serif;
-      line-height: 1.55;
-      font-size: 18px;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    .wrap {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: clamp(2rem, 6vw, 5rem) 1.5rem 4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .symbol-holder {
-      color: var(--accent);
-      width: clamp(90px, 22vw, 140px);
-      margin-bottom: 1.6rem;
-    }
-    .hub-symbol { display: block; width: 100%; height: auto; }
-    .masthead { text-align: center; margin-bottom: 3rem; }
-    .title {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      font-size: clamp(2.4rem, 9vw, 3.6rem);
-      text-transform: uppercase;
-      padding-left: 0.22em;
-    }
-    .subtitle {
-      margin-top: 0.6rem;
-      font-style: italic;
-      color: var(--ink-soft);
-      font-size: clamp(1rem, 3.5vw, 1.15rem);
-      letter-spacing: 0.02em;
-    }
-    .enter {
-      text-align: center;
-      margin-bottom: 3.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .enter-btn {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.95rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink);
-      background: transparent;
-      border: 1px solid var(--ink);
-      padding: 0.85rem 2.4rem;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: background 0.25s ease, color 0.25s ease, opacity 0.25s ease;
-    }
-    .enter-btn:not(:disabled):hover { background: var(--ink); color: var(--bg); }
-    .enter-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-    .enter-note {
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-    }
-    .about, .tips {
-      width: 100%;
-      border-top: 1px solid var(--line);
-      padding-top: 2rem;
-      margin-bottom: 2.5rem;
-    }
-    .section-label {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 1rem;
-    }
-    .about p { color: var(--ink); }
-    .tip-list { list-style: none; display: flex; flex-direction: column; gap: 1.6rem; }
-    .tip-text { color: var(--ink); }
-    .tip-by {
-      display: block;
-      margin-top: 0.4rem;
-      font-size: 0.85rem;
-      font-style: italic;
-      color: var(--ink-soft);
-    }
-    .foot {
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--line);
-      width: 100%;
-      text-align: center;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>THE HUB -- onde humanos convergem</title>
+<meta name="description" content="THE HUB -- onde humanos convergem. Aprendizes do mundo inteiro criando juntos a energia extra para aprender uma língua nova." />
 
-    /* Espaco entre paragrafos das secoes de texto */
-    .about p + p,
-    .room p + p { margin-top: 0.9rem; }
+<meta property="og:type" content="website" />
+<meta property="og:title" content="THE HUB -- onde humanos convergem" />
+<meta property="og:description" content="Não falta método. Falta a energia extra. E isso a gente resolve -- juntos." />
+<meta property="og:locale" content="pt_BR" />
+<meta name="theme-color" content="#EDEDE8" />
 
-    .about em { font-style: italic; }
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 175'%3E%3Cg fill='none' stroke='%2316181A' stroke-width='7' stroke-linecap='round'%3E%3Cpath d='M52,160 C68,128 90,78 98.4,36'/%3E%3Cpath d='M148,160 C132,128 110,78 101.6,36'/%3E%3Cpath d='M100,160 L100,10'/%3E%3Cpath d='M98.4,36 C97.4,30 94.8,22 92,14'/%3E%3Cpath d='M101.6,36 C102.6,30 105.2,22 108,14'/%3E%3C/g%3E%3C/svg%3E" />
 
-    .about-close {
-      margin-top: 1.2rem !important;
-      font-style: italic;
-      color: var(--ink);
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet" />
 
-    /* Secao "a sala" - mesmo tratamento visual de "o projeto" */
-    .room {
-      width: 100%;
-      border-top: 1px solid var(--line);
-      padding-top: 2rem;
-      margin-bottom: 2.5rem;
-    }
+<script>document.documentElement.className += " js";</script>
 
-    /* Secao "organizador responsavel" */
-    .organizer {
-      width: 100%;
-      border-top: 1px solid var(--line);
-      padding-top: 2rem;
-      margin-bottom: 2.5rem;
-    }
+<style>
+  :root {
+    --paper:   #ededE8;
+    --ink:     #16181a;
+    --ink-2:   #5a5f63;
+    --rule:    #d3d4ce;
+    --glass:   #1f5f6b;
 
-    .org-card {
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-      margin-bottom: 1.4rem;
-    }
+    --measure: 34rem;
 
-    .org-photo {
-      flex: 0 0 96px;
-      width: 96px;
-      height: 96px;
-      border: 1px solid var(--line);
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 2px;
-    }
+    --sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --serif: "Literata", Georgia, "Times New Roman", serif;
+  }
 
-    .org-photo-placeholder {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-    }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
-    .org-info { flex: 1; min-width: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-    .org-name {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.4rem;
-    }
+  .wrap {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 8vw, 5.5rem) 1.5rem 4rem;
+  }
 
-    .org-bio {
-      color: var(--ink-soft);
-      font-size: 0.95rem;
-      font-style: italic;
-    }
+  /* ============ HERO ============ */
+  .hero { text-align: center; margin-bottom: clamp(3rem, 10vw, 4.5rem); }
 
-    .org-links {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 1.2rem;
-      padding-top: 0.4rem;
-    }
+  .symbol-holder {
+    color: var(--ink);
+    width: clamp(84px, 20vw, 118px);
+    margin: 0 auto 1.75rem;
+  }
+  .hub-symbol { display: block; width: 100%; height: auto; overflow: visible; }
 
-    .org-links a {
-      color: var(--ink);
-      text-decoration: none;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 2px;
-      transition: border-color 0.2s ease, color 0.2s ease;
-    }
-    .org-links a:hover {
-      border-color: var(--ink);
-    }
+  .title {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(2.3rem, 10.5vw, 3.6rem);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding-left: 0.18em;
+    color: var(--ink);
+  }
+  .title .ch { display: inline-block; }
+  .title .sp { display: inline-block; width: 0.42em; }
 
-    /* Sub-cabecalho ("como funciona") */
-    .sub-label {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-top: 2rem;
-      margin-bottom: 1.2rem;
-    }
+  .subtitle {
+    margin-top: 0.85rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(0.98rem, 3.4vw, 1.1rem);
+    color: var(--ink-2);
+  }
 
-    /* Blocos "como funciona" */
-    .proposal {
-      width: 100%;
-      border-top: 1px solid var(--line);
-      padding-top: 2rem;
-      margin-bottom: 2.5rem;
-    }
+  /* ============ CTA ============ */
+  .enter { margin-top: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
 
-    .mech {
-      margin-bottom: 1.6rem;
-    }
+  .enter-btn {
+    font-family: var(--sans);
+    font-size: 0.86rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    padding: 0.9rem 2.5rem;
+    border-radius: 0;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: color .3s ease, border-color .3s ease;
+  }
+  .enter-btn::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: var(--ink);
+    transform: translateY(101%);
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+    z-index: -1;
+  }
+  .enter-btn:not(:disabled):hover { color: var(--paper); }
+  .enter-btn:not(:disabled):hover::after { transform: translateY(0); }
+  .enter-btn:disabled { border-color: var(--rule); color: var(--ink-2); cursor: not-allowed; }
 
-    .mech-title {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      margin-bottom: 0.5rem;
-      color: var(--ink);
-    }
+  .enter-note {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
 
-    .mech p + p { margin-top: 0.6rem; }
+  /* ============ SEÇÕES ============ */
+  .band { padding-top: 2.25rem; margin-bottom: 3rem; border-top: 1px solid var(--rule); }
+  .band--plain { border-top: none; padding-top: 0; }
 
-    .mech p {
-      color: var(--ink);
-    }
-  </style>
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--glass);
+    margin-bottom: 1.15rem;
+  }
+
+  .band p + p { margin-top: 0.95rem; }
+  .band em { font-style: italic; }
+  .band strong { font-weight: 600; }
+
+  .lede-close { margin-top: 1.35rem !important; }
+
+  /* ============ APOIO ============ */
+  .tip-list { list-style: none; display: flex; flex-direction: column; gap: 1.75rem; }
+  .tip-by {
+    display: block;
+    margin-top: 0.45rem;
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-2);
+  }
+
+  /* ============ COMO FUNCIONA ============ */
+  .sub-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 2.25rem 0 1.35rem;
+  }
+
+  .mech { margin-bottom: 1.85rem; padding-left: 1.15rem; border-left: 1px solid var(--rule); }
+  .mech-title {
+    font-family: var(--sans);
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    margin-bottom: 0.5rem;
+  }
+  .mech p + p { margin-top: 0.65rem; }
+
+  /* ============ LINHA DO TEMPO ============ */
+  .track { list-style: none; margin-top: 1.5rem; position: relative; padding-left: 1.6rem; }
+  .track::before {
+    content: "";
+    position: absolute;
+    left: 3px; top: 0.55rem; bottom: 0.55rem;
+    width: 1px;
+    background: var(--rule);
+  }
+  .stop { position: relative; padding-bottom: 1.75rem; }
+  .stop:last-child { padding-bottom: 0; }
+  .stop::before {
+    content: "";
+    position: absolute;
+    left: -1.6rem; top: 0.5rem;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--glass);
+  }
+  .stop-when {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--glass);
+    margin-bottom: 0.35rem;
+  }
+
+  /* ============ ORGANIZADOR ============ */
+  .org-card { display: flex; gap: 1.15rem; align-items: flex-start; margin-bottom: 1.5rem; }
+  .org-photo {
+    flex: 0 0 92px; width: 92px; height: 92px;
+    border: 1px solid var(--rule);
+    display: grid; place-items: center;
+  }
+  .org-photo span {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .org-name { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
+  .org-bio { color: var(--ink-2); font-size: 0.95rem; font-style: italic; }
+
+  .org-links { list-style: none; display: flex; flex-wrap: wrap; gap: 0.55rem 1.35rem; }
+  .org-links a {
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 3px;
+  }
+  .org-links a::after {
+    content: "";
+    position: absolute; left: 0; bottom: 0;
+    width: 100%; height: 1px;
+    background: var(--glass);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .28s cubic-bezier(.4,0,.2,1);
+  }
+  .org-links a:hover { color: var(--glass); }
+  .org-links a:hover::after { transform: scaleX(1); }
+
+  /* ============ RODAPÉ ============ */
+  .foot {
+    margin-top: 3rem; padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  /* ============ FOCO / A11Y ============ */
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--glass);
+    outline-offset: 3px;
+  }
+
+  /* ============ MOVIMENTO ============ */
+  .hub-symbol path { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); }
+  .hub-symbol.drawn path {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.95s cubic-bezier(.33,0,.2,1);
+    transition-delay: var(--d, 0s);
+  }
+
+  .title .ch { opacity: 0; transform: translateY(0.32em); }
+  .title.settled .ch {
+    opacity: 1; transform: none;
+    transition: opacity .5s ease, transform .6s cubic-bezier(.2,.7,.3,1);
+    transition-delay: var(--d, 0s);
+  }
+
+  .js .reveal { opacity: 0; transform: translateY(14px); }
+  .js .reveal.is-in {
+    opacity: 1; transform: none;
+    transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hub-symbol path { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+    .title .ch { opacity: 1 !important; transform: none !important; }
+    .reveal, .js .reveal { opacity: 1 !important; transform: none !important; }
+    * { transition-duration: .01ms !important; }
+  }
+</style>
 </head>
 <body>
-  <main class="wrap">
+<main class="wrap">
 
+  <!-- ===== HERO ===== -->
+  <div class="hero">
     <div class="symbol-holder">
-      <svg viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fluxo ascendente convergente" class="hub-symbol">
+      <svg viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nove raios ascendentes que convergem" class="hub-symbol">
         <g fill="none" stroke="currentColor" stroke-linecap="round" opacity="0.28" stroke-width="1">
           <path d="M52,160 C68,128 90,78 98.4,36" />
           <path d="M148,160 C132,128 110,78 101.6,36" />
@@ -292,117 +333,197 @@
       </svg>
     </div>
 
-    <header class="masthead">
-      <h1 class="title">THE HUB</h1>
-      <p class="subtitle">onde humanos convergem</p>
-    </header>
+    <h1 class="title" id="wordmark">THE HUB</h1>
+    <p class="subtitle">onde humanos convergem</p>
 
-    <section class="enter">
+    <div class="enter">
       <button class="enter-btn" disabled aria-disabled="true">entrar na sala</button>
       <p class="enter-note">em breve</p>
-    </section>
+    </div>
+  </div>
 
-    <section class="about">
-      <p>Não falta método para aprender uma nova língua. Métodos existem muitos, e muitos bons.</p>
-      <p><strong>Mas implementar é outra história.</strong></p>
-      <p>Implementar e manter a constância <em>ainda</em> outra história.</p>
-      <p>Aqui a gente já percebeu que o que falta não é nem tempo. 10 minutos por dia seria o suficiente para avançar. O que falta mesmo é <em>a energia extra</em>. E isso a gente resolve.</p>
-      <p class="about-close"><strong>Nós fazemos juntos.</strong></p>
-    </section>
+  <!-- ===== LEDE ===== -->
+  <section class="band reveal">
+    <p>Não falta método para aprender uma nova língua. Métodos existem muitos, e muitos bons.</p>
+    <p><strong>Mas implementar é outra história.</strong></p>
+    <p>Implementar e manter a constância <em>ainda</em> outra história.</p>
+    <p>Aqui a gente já percebeu que o que falta não é nem tempo. 10 minutos por dia seria o suficiente para avançar. O que falta mesmo é <em>a energia extra</em>. E isso a gente resolve.</p>
+    <p class="lede-close"><strong>Nós fazemos juntos.</strong></p>
+  </section>
 
-    <section class="tips">
-      <h2 class="section-label">a gente se apoia</h2>
-      <ul class="tip-list">
-        <li class="tip">
-          <p class="tip-text">Comece o trabalho no dia em que ele é passado, nem que seja só lendo o enunciado. O custo de entrada some.</p>
-          <span class="tip-by">-- anônimo</span>
-        </li>
-        <li class="tip">
-          <p class="tip-text">Estudar explicando em voz alta para uma cadeira vazia funciona melhor do que reler. Se você trava, é ali que estava o buraco.</p>
-          <span class="tip-by">-- anônimo</span>
-        </li>
-        <li class="tip">
-          <p class="tip-text">Pergunte cedo. A pergunta que te envergonha hoje é a mesma que dez colegas estão engolindo.</p>
-          <span class="tip-by">-- anônimo</span>
-        </li>
-      </ul>
-    </section>
+  <!-- ===== A GENTE SE APOIA ===== -->
+  <section class="band reveal">
+    <h2 class="eyebrow">a gente se apoia</h2>
+    <ul class="tip-list">
+      <li>
+        <p>Comece o trabalho no dia em que ele é passado, nem que seja só lendo o enunciado. O custo de entrada some.</p>
+        <span class="tip-by">-- anônimo</span>
+      </li>
+      <li>
+        <p>Estudar explicando em voz alta para uma cadeira vazia funciona melhor do que reler. Se você trava, é ali que estava o buraco.</p>
+        <span class="tip-by">-- anônimo</span>
+      </li>
+      <li>
+        <p>Pergunte cedo. A pergunta que te envergonha hoje é a mesma que dez colegas estão engolindo.</p>
+        <span class="tip-by">-- anônimo</span>
+      </li>
+    </ul>
+  </section>
 
-    <section class="proposal">
-      <h2 class="section-label">a proposta</h2>
-      <p>Aulas são um excelente recurso mas não são o suficiente. O aprendiz precisa de contato constante com a língua, e contato constante custa. O que te oferecemos é a energia constante, e contato humano para te manter forte no seu objetivo, nos dias bons e ruins.</p>
+  <!-- ===== A PROPOSTA ===== -->
+  <section class="band reveal">
+    <h2 class="eyebrow">a proposta</h2>
+    <p>Aulas são um excelente recurso mas não são o suficiente. O aprendiz precisa de contato constante com a língua, e contato constante custa. O que te oferecemos é a energia constante, e contato humano para te manter forte no seu objetivo, nos dias bons e ruins.</p>
 
-      <h3 class="sub-label">como funciona</h3>
+    <h3 class="sub-eyebrow">como funciona</h3>
 
-      <div class="mech">
-        <h4 class="mech-title">Aulas semanais</h4>
-        <p>No THE HUB, só ensina quem é poliglota, tem experiência vasta, e está aprendendo uma língua. Fazer aulas é um método que você já conhece, sim. Mas te desafio a encontrar professores mais competentes.</p>
-        <p>Aulas com 1–3 alunos para fortalecer os laços humanos ao mesmo tempo que a aula pode ser individualmente personalizada.</p>
+    <div class="mech">
+      <h4 class="mech-title">Aulas semanais</h4>
+      <p>No THE HUB, só ensina quem é poliglota, tem experiência vasta, e está aprendendo uma língua. Fazer aulas é um método que você já conhece, sim. Mas te desafio a encontrar professores mais competentes.</p>
+      <p>Aulas com 1–3 alunos para fortalecer os laços humanos ao mesmo tempo que a aula pode ser individualmente personalizada.</p>
+    </div>
+
+    <div class="mech">
+      <h4 class="mech-title">Contato diário durante a semana</h4>
+      <p>A Central envia vídeos e textos de segunda a sexta que funcionam tanto como lembrete como conteúdo de apoio, especialmente para manter sua rotina. São recebidos no Grupo Geral e nas Células de Aprendizado.</p>
+    </div>
+
+    <div class="mech">
+      <h4 class="mech-title">O Geral e a Célula</h4>
+      <p>Aulas na maioria dos casos não é o suficiente. Por isso cada aprendiz participa de um Nó Geral (grupo no WhatsApp de até 120 pessoas) e de uma Célula de Aprendizado (grupo no WhatsApp de até 7 pessoas).</p>
+    </div>
+
+    <div class="mech">
+      <h4 class="mech-title">Aulão mensal</h4>
+      <p>Guarde a data. Esse é o dia em que TODOS nós nos reunimos para rir, chorar, ajustar o curso e planejar juntos. Um aprendiz muito competente dá o Aulão, entrega pérolas para o grupo manter e multiplicar.</p>
+    </div>
+
+    <p>E isso só é possível se as aulas forem feitas para <em>você</em>, em um <em>grupo comprometido</em>, trabalhando a <em>longo prazo</em>.</p>
+
+    <h3 class="sub-eyebrow">visão coletiva de longo prazo</h3>
+
+    <p>Um grupo de 3–7 pessoas começa junto. O objetivo de cada um é detalhado, junto com preferências, estilos, aptidões e nível atual. O seu objetivo se torna o objetivo do grupo, e vice-versa.</p>
+    <p>Depois de um mês trabalhando juntos, o grupo passa a ser chamado de Célula e, encontrada coesão, cria um projeto para apresentar às outras Células ao final de 5 meses trabalhando juntos.</p>
+
+    <ol class="track">
+      <li class="stop">
+        <span class="stop-when">início</span>
+        <p>o grupo se forma</p>
+      </li>
+      <li class="stop">
+        <span class="stop-when">1 mês</span>
+        <p>o grupo vira Célula</p>
+      </li>
+      <li class="stop">
+        <span class="stop-when">5 meses</span>
+        <p>a Célula apresenta seu projeto -- início de julho, início de dezembro</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== A SALA ===== -->
+  <section class="band reveal">
+    <h2 class="eyebrow">a sala</h2>
+    <p>A sala, um lugar de estar, é o nosso espaço. Eu comecei a organizar a sala com meus 15 anos de experiência dando aulas.</p>
+    <p>Mas cada um de nós aprendizes que entramos podemos mudar algo, pensando em dar nossa cara, e em favorecer os outros aprendizes. O jeito que você vai ver a sala é como ela ficou desde que o último aprendiz mudou ela.</p>
+    <p>THE HUB é um lugar onde aprendizes do mundo inteiro se encontram com um objetivo comum: aprender uma língua nova. E com esse objetivo comum, criamos juntos a energia extra para uma nova possibilidade.</p>
+  </section>
+
+  <!-- ===== ORGANIZADOR ===== -->
+  <section class="band reveal">
+    <h2 class="eyebrow">organizador responsável</h2>
+    <div class="org-card">
+      <div class="org-photo"><span>foto</span></div>
+      <div>
+        <p class="org-name">Matheus Veras Prado</p>
+        <p class="org-bio">[descrição]</p>
       </div>
+    </div>
+    <ul class="org-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">YouTube</a></li>
+      <li><a href="#">TikTok</a></li>
+      <li><a href="#">WhatsApp</a></li>
+    </ul>
+  </section>
 
-      <div class="mech">
-        <h4 class="mech-title">Contato diário durante a semana</h4>
-        <p>A Central envia vídeos e textos de segunda a sexta que funcionam tanto como lembrete como conteúdo de apoio, especialmente para manter sua rotina. São recebidos no Grupo Geral e nas Células de Aprendizado.</p>
-      </div>
+  <footer class="foot">THE HUB</footer>
 
-      <div class="mech">
-        <h4 class="mech-title">O Geral e a Célula</h4>
-        <p>Aulas na maioria dos casos não é o suficiente. Por isso cada aprendiz participa de um Nó Geral (grupo no WhatsApp de até 120 pessoas) e de uma Célula de Aprendizado (grupo no WhatsApp de até 7 pessoas).</p>
-      </div>
+</main>
 
-      <div class="mech">
-        <h4 class="mech-title">Aulão mensal</h4>
-        <p>Guarde a data. Esse é o dia em que TODOS nós nos reunimos para rir, chorar, ajustar o curso e planejar juntos. Um aprendiz muito competente dá o Aulão, entrega pérolas para o grupo manter e multiplicar.</p>
-      </div>
-    </section>
+<script>
+(function () {
+  "use strict";
 
-    <section class="room">
-      <h2 class="section-label">a sala</h2>
-      <p>A sala, um lugar de estar, é o nosso espaço. Eu comecei a organizar a sala com meus 15 anos de experiência dando aulas.</p>
-      <p>Mas cada um de nós aprendizes que entramos podemos mudar algo, pensando em dar nossa cara, e em favorecer os outros aprendizes. O jeito que você vai ver a sala é como ela ficou desde que o último aprendiz mudou ela.</p>
-      <p>THE HUB é um lugar onde aprendizes do mundo inteiro se encontram com um objetivo comum: aprender uma língua nova. E com esse objetivo comum, criamos juntos a energia extra para uma nova possibilidade.</p>
-    </section>
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    <section class="organizer">
-      <h2 class="section-label">organizador responsável</h2>
-      <div class="org-card">
-        <div class="org-photo" aria-label="Foto de Matheus Veras Prado">
-          <span class="org-photo-placeholder">foto</span>
-        </div>
-        <div class="org-info">
-          <p class="org-name">Matheus Veras Prado</p>
-          <p class="org-bio">[descrição]</p>
-        </div>
-      </div>
-      <ul class="org-links" aria-label="Redes">
-        <li><a href="#" aria-label="Instagram">Instagram</a></li>
-        <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
-        <li><a href="#" aria-label="YouTube">YouTube</a></li>
-        <li><a href="#" aria-label="TikTok">TikTok</a></li>
-        <li><a href="#" aria-label="WhatsApp">WhatsApp</a></li>
-      </ul>
-    </section>
-
-    <footer class="foot">
-      <span>THE HUB</span>
-    </footer>
-
-  </main>
-
-  <script>
-    (function () {
-      "use strict";
-      const enterBtn = document.querySelector(".enter-btn");
-      if (!enterBtn) return;
-      function enterRoom() {
-        console.log("[THE HUB] entrada na sala ainda não implementada.");
-      }
-      enterBtn.addEventListener("click", function () {
-        if (enterBtn.disabled) return;
-        enterRoom();
+  /* --- 1. Convergência: os raios se desenham da base ao ápice --- */
+  var svg = document.querySelector(".hub-symbol");
+  if (svg && !reduced) {
+    // Camadas de trás partem primeiro, as da frente fecham o movimento.
+    var layers = Array.prototype.slice.call(svg.querySelectorAll("g"));
+    layers.forEach(function (g, gi) {
+      Array.prototype.forEach.call(g.querySelectorAll("path"), function (p) {
+        var len = p.getTotalLength();
+        p.style.setProperty("--len", len);
+        var isCrown = len < 40;              // coroa: trecho curto acima do estreitamento
+        var base = gi * 0.06;                // camada de trás → frente
+        p.style.setProperty("--d", (isCrown ? 0.72 + base : base) + "s");
       });
-    })();
-  </script>
+    });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { svg.classList.add("drawn"); });
+    });
+  } else if (svg) {
+    svg.classList.add("drawn");
+  }
+
+  /* --- 2. O letreiro assenta depois da convergência --- */
+  var wm = document.getElementById("wordmark");
+  if (wm) {
+    var text = wm.textContent;
+    wm.textContent = "";
+    var i = 0;
+    text.split("").forEach(function (c) {
+      var s = document.createElement("span");
+      if (c === " ") {
+        s.className = "sp";
+      } else {
+        s.className = "ch";
+        s.style.setProperty("--d", (0.72 + i * 0.045) + "s");
+        i++;
+      }
+      s.textContent = c === " " ? "\u00A0" : c;
+      wm.appendChild(s);
+    });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { wm.classList.add("settled"); });
+    });
+  }
+
+  /* --- 3. Seções sobem ao entrar na tela --- */
+  var targets = document.querySelectorAll(".reveal");
+  if (reduced || !("IntersectionObserver" in window)) {
+    Array.prototype.forEach.call(targets, function (t) { t.classList.add("is-in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    Array.prototype.forEach.call(targets, function (t) { io.observe(t); });
+  }
+
+  /* --- 4. Entrada na sala (ainda não implementada) --- */
+  var btn = document.querySelector(".enter-btn");
+  if (btn) {
+    btn.addEventListener("click", function () {
+      if (btn.disabled) return;
+      // window.location.href = "/sala";
+    });
+  }
+})();
+</script>
 </body>
 </html>
-
