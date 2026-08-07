@@ -215,6 +215,45 @@
     .org-links a:hover {
       border-color: var(--ink);
     }
+
+    /* Sub-cabecalho ("como funciona") */
+    .sub-label {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Blocos "como funciona" */
+    .proposal {
+      width: 100%;
+      border-top: 1px solid var(--line);
+      padding-top: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .mech {
+      margin-bottom: 1.6rem;
+    }
+
+    .mech-title {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .mech p + p { margin-top: 0.6rem; }
+
+    .mech p {
+      color: var(--ink);
+    }
   </style>
 </head>
 <body>
@@ -264,12 +303,11 @@
     </section>
 
     <section class="about">
-      <h2 class="section-label">o projeto</h2>
       <p>Não falta método para aprender uma nova língua. Métodos existem muitos, e muitos bons.</p>
-      <p>Mas implementar é outra história. Implementar e manter a constância <em>ainda</em> outra história.</p>
-      <p>Aqui a gente já percebeu que o que falta não é nem tempo. 10 minutos por dia seria o suficiente para avançar. O que falta mesmo é <em>a energia extra</em>.</p>
-      <p>E isso a gente resolve.</p>
-      <p class="about-close">Nós fazemos juntos.</p>
+      <p><strong>Mas implementar é outra história.</strong></p>
+      <p>Implementar e manter a constância <em>ainda</em> outra história.</p>
+      <p>Aqui a gente já percebeu que o que falta não é nem tempo. 10 minutos por dia seria o suficiente para avançar. O que falta mesmo é <em>a energia extra</em>. E isso a gente resolve.</p>
+      <p class="about-close"><strong>Nós fazemos juntos.</strong></p>
     </section>
 
     <section class="tips">
@@ -288,6 +326,34 @@
           <span class="tip-by">-- anônimo</span>
         </li>
       </ul>
+    </section>
+
+    <section class="proposal">
+      <h2 class="section-label">a proposta</h2>
+      <p>Aulas são um excelente recurso mas não são o suficiente. O aprendiz precisa de contato constante com a língua, e contato constante custa. O que te oferecemos é a energia constante, e contato humano para te manter forte no seu objetivo, nos dias bons e ruins.</p>
+
+      <h3 class="sub-label">como funciona</h3>
+
+      <div class="mech">
+        <h4 class="mech-title">Aulas semanais</h4>
+        <p>No THE HUB, só ensina quem é poliglota, tem experiência vasta, e está aprendendo uma língua. Fazer aulas é um método que você já conhece, sim. Mas te desafio a encontrar professores mais competentes.</p>
+        <p>Aulas com 1–3 alunos para fortalecer os laços humanos ao mesmo tempo que a aula pode ser individualmente personalizada.</p>
+      </div>
+
+      <div class="mech">
+        <h4 class="mech-title">Contato diário durante a semana</h4>
+        <p>A Central envia vídeos e textos de segunda a sexta que funcionam tanto como lembrete como conteúdo de apoio, especialmente para manter sua rotina. São recebidos no Grupo Geral e nas Células de Aprendizado.</p>
+      </div>
+
+      <div class="mech">
+        <h4 class="mech-title">O Geral e a Célula</h4>
+        <p>Aulas na maioria dos casos não é o suficiente. Por isso cada aprendiz participa de um Nó Geral (grupo no WhatsApp de até 120 pessoas) e de uma Célula de Aprendizado (grupo no WhatsApp de até 7 pessoas).</p>
+      </div>
+
+      <div class="mech">
+        <h4 class="mech-title">Aulão mensal</h4>
+        <p>Guarde a data. Esse é o dia em que TODOS nós nos reunimos para rir, chorar, ajustar o curso e planejar juntos. Um aprendiz muito competente dá o Aulão, entrega pérolas para o grupo manter e multiplicar.</p>
+      </div>
     </section>
 
     <section class="room">
@@ -339,3 +405,4 @@
   </script>
 </body>
 </html>
+
