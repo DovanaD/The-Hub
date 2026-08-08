@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>THE HUB -- onde humanos convergem</title>
-<meta name="description" content="THE HUB -- onde humanos convergem. Aprendizes do mundo inteiro criando juntos a energia extra para aprender uma língua nova." />
+<title>THE HUB -- Onde Humanos Convergem</title>
+<meta name="description" content="THE HUB -- Onde Humanos Convergem. Aprendizes do mundo inteiro criando juntos a energia extra para aprender uma língua nova." />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="THE HUB -- onde humanos convergem" />
+<meta property="og:title" content="THE HUB -- Onde Humanos Convergem" />
 <meta property="og:description" content="Não falta método. Falta a energia extra. E isso a gente resolve -- juntos." />
 <meta property="og:locale" content="pt_BR" />
 <meta name="theme-color" content="#EDEDE8" />
@@ -125,8 +125,37 @@
   }
 
   /* ============ SEÇÕES ============ */
-  .band { padding-top: 2.25rem; margin-bottom: 3rem; border-top: 1px solid var(--rule); }
+  .band {
+    padding-top: 2.25rem;
+    margin-bottom: 3rem;
+    border-top: 1px solid var(--rule);
+    position: relative;
+  }
   .band--plain { border-top: none; padding-top: 0; }
+
+  /* Halo suave que acende ao chegar. Fica atrás do texto, centrado na borda
+     superior da seção -- a "luz de cena" que se acende ao andar. */
+  .band::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -1px;
+    width: 88%;
+    height: 220px;
+    transform: translate(-50%, -55%);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(31, 95, 107, 0.14) 0%,
+      rgba(31, 95, 107, 0.06) 35%,
+      rgba(31, 95, 107, 0) 70%
+    );
+    opacity: 0;
+    transition: opacity 1.6s ease-out;
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(4px);
+  }
+  .band.lit::before { opacity: 1; }
 
   .eyebrow {
     font-family: var(--sans);
@@ -206,7 +235,70 @@
     margin-bottom: 0.35rem;
   }
 
-  /* ============ ORGANIZADOR ============ */
+  /* ============ SALA -- foto + convite ============ */
+  .sala-photo {
+    margin: 1.75rem 0 1.5rem;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    border: 1px solid var(--rule);
+    display: grid;
+    place-items: center;
+    background: rgba(31, 95, 107, 0.03);
+  }
+  .sala-photo span {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  .sala-cta {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    text-align: center;
+  }
+
+  .sala-btn {
+    font-family: var(--sans);
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--ink);
+    border: 1px solid var(--ink);
+    padding: 1.1rem 3rem;
+    border-radius: 0;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s cubic-bezier(.4,0,.2,1), box-shadow .3s ease;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,0.05);
+  }
+  .sala-btn:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px -10px rgba(31, 95, 107, 0.55);
+  }
+  .sala-btn:not(:disabled):active { transform: translateY(0); }
+  .sala-btn:disabled {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  .sala-btn-note {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
   .org-card { display: flex; gap: 1.15rem; align-items: flex-start; margin-bottom: 1.5rem; }
   .org-photo {
     flex: 0 0 92px; width: 92px; height: 92px;
@@ -223,7 +315,13 @@
   .org-name { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
   .org-bio { color: var(--ink-2); font-size: 0.95rem; font-style: italic; }
 
-  .org-links { list-style: none; display: flex; flex-wrap: wrap; gap: 0.55rem 1.35rem; }
+  .org-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.55rem 1.35rem;
+  }
   .org-links a {
     font-family: var(--sans);
     font-size: 0.74rem;
@@ -280,17 +378,10 @@
     transition-delay: var(--d, 0s);
   }
 
-  .js .reveal { opacity: 0; transform: translateY(14px); }
-  .js .reveal.is-in {
-    opacity: 1; transform: none;
-    transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1);
-  }
-
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .hub-symbol path { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
     .title .ch { opacity: 1 !important; transform: none !important; }
-    .reveal, .js .reveal { opacity: 1 !important; transform: none !important; }
     * { transition-duration: .01ms !important; }
   }
 </style>
@@ -334,16 +425,11 @@
     </div>
 
     <h1 class="title" id="wordmark">THE HUB</h1>
-    <p class="subtitle">onde humanos convergem</p>
-
-    <div class="enter">
-      <button class="enter-btn" disabled aria-disabled="true">entrar na sala</button>
-      <p class="enter-note">em breve</p>
-    </div>
+    <p class="subtitle">Onde Humanos Convergem</p>
   </div>
 
   <!-- ===== LEDE ===== -->
-  <section class="band reveal">
+  <section class="band">
     <p>Não falta método para aprender uma nova língua. Métodos existem muitos, e muitos bons.</p>
     <p><strong>Mas implementar é outra história.</strong></p>
     <p>Implementar e manter a constância <em>ainda</em> outra história.</p>
@@ -352,7 +438,7 @@
   </section>
 
   <!-- ===== A GENTE SE APOIA ===== -->
-  <section class="band reveal">
+  <section class="band">
     <h2 class="eyebrow">a gente se apoia</h2>
     <ul class="tip-list">
       <li>
@@ -371,7 +457,7 @@
   </section>
 
   <!-- ===== A PROPOSTA ===== -->
-  <section class="band reveal">
+  <section class="band">
     <h2 class="eyebrow">a proposta</h2>
     <p>Aulas são um excelente recurso mas não são o suficiente. O aprendiz precisa de contato constante com a língua, e contato constante custa. O que te oferecemos é a energia constante, e contato humano para te manter forte no seu objetivo, nos dias bons e ruins.</p>
 
@@ -416,21 +502,30 @@
       </li>
       <li class="stop">
         <span class="stop-when">5 meses</span>
-        <p>a Célula apresenta seu projeto -- início de julho, início de dezembro</p>
+        <p>a Célula apresenta seu projeto -- e escolhe se inicia próximo ciclo</p>
       </li>
     </ol>
   </section>
 
   <!-- ===== A SALA ===== -->
-  <section class="band reveal">
+  <section class="band">
     <h2 class="eyebrow">a sala</h2>
     <p>A sala, um lugar de estar, é o nosso espaço. Eu comecei a organizar a sala com meus 15 anos de experiência dando aulas.</p>
     <p>Mas cada um de nós aprendizes que entramos podemos mudar algo, pensando em dar nossa cara, e em favorecer os outros aprendizes. O jeito que você vai ver a sala é como ela ficou desde que o último aprendiz mudou ela.</p>
     <p>THE HUB é um lugar onde aprendizes do mundo inteiro se encontram com um objetivo comum: aprender uma língua nova. E com esse objetivo comum, criamos juntos a energia extra para uma nova possibilidade.</p>
+
+    <div class="sala-photo" aria-label="Foto da Sala ou da turma"><span>foto da sala</span></div>
+
+    <div class="sala-cta">
+      <button class="sala-btn" disabled aria-disabled="true">
+        entrar n'A Sala
+      </button>
+      <p class="sala-btn-note">em breve</p>
+    </div>
   </section>
 
   <!-- ===== ORGANIZADOR ===== -->
-  <section class="band reveal">
+  <section class="band">
     <h2 class="eyebrow">organizador responsável</h2>
     <div class="org-card">
       <div class="org-photo"><span>foto</span></div>
@@ -502,21 +597,26 @@
     });
   }
 
-  /* --- 3. Seções sobem ao entrar na tela --- */
-  var targets = document.querySelectorAll(".reveal");
-  if (reduced || !("IntersectionObserver" in window)) {
-    Array.prototype.forEach.call(targets, function (t) { t.classList.add("is-in"); });
-  } else {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
-    Array.prototype.forEach.call(targets, function (t) { io.observe(t); });
+  /* --- 3. Glow entre seções acende conforme a pessoa rola --- */
+  // Uma lâmpada suave por divisor de seção. O texto está sempre visível;
+  // só a luz de fundo é que acende ao passar. Analogia a luz de cena de
+  // teatro que se acende ao ator caminhar no escuro.
+  var bands = document.querySelectorAll(".band");
+  if (bands.length) {
+    if (reduced || !("IntersectionObserver" in window)) {
+      Array.prototype.forEach.call(bands, function (t) { t.classList.add("lit"); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("lit"); io.unobserve(e.target); }
+        });
+      }, { rootMargin: "0px 0px -15% 0px", threshold: 0.15 });
+      Array.prototype.forEach.call(bands, function (t) { io.observe(t); });
+    }
   }
 
-  /* --- 4. Entrada na sala (ainda não implementada) --- */
-  var btn = document.querySelector(".enter-btn");
+  /* --- 4. Entrada n'A Sala (ainda não implementada) --- */
+  var btn = document.querySelector(".sala-btn");
   if (btn) {
     btn.addEventListener("click", function () {
       if (btn.disabled) return;
