@@ -376,17 +376,9 @@
     transition-delay: var(--d, 0s);
   }
 
-  .title .ch { opacity: 0; transform: translateY(0.32em); }
-  .title.settled .ch {
-    opacity: 1; transform: none;
-    transition: opacity .5s ease, transform .6s cubic-bezier(.2,.7,.3,1);
-    transition-delay: var(--d, 0s);
-  }
-
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .hub-symbol path { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
-    .title .ch { opacity: 1 !important; transform: none !important; }
     * { transition-duration: .01ms !important; }
   }
 </style>
@@ -526,8 +518,7 @@
   <section class="band">
     <h2 class="eyebrow">a sala</h2>
     <p>Esta é a Sala, nosso espaço conjunto de estar. Entra, dá uma olhada.</p>
-    <p>Cada aprendiz que entra pode mudar algo na Sala para dar a nossa cara e ajudar outros aprendizes. O jeito que você vai ver a Sala é como ela ficou desde que o último aprendiz mudou ela.</p>
-    <p>A Sala é feita também para o próprio desenho ilustrar o método. Chega aí:</p>
+    <p>Cada aprendiz pode fazer mudanças na Sala, para dar a nossa cara e ajudar outros aprendizes. A Sala é onde convergimos.</p>
 
     <button class="sala-enter" disabled aria-disabled="true" aria-label="Entrar na Sala (em breve)">
       <span class="sala-enter-photo"><span>foto da Sala</span></span>
@@ -586,29 +577,6 @@
     });
   } else if (svg) {
     svg.classList.add("drawn");
-  }
-
-  /* --- 2. O letreiro assenta depois da convergência --- */
-  var wm = document.getElementById("wordmark");
-  if (wm) {
-    var text = wm.textContent;
-    wm.textContent = "";
-    var i = 0;
-    text.split("").forEach(function (c) {
-      var s = document.createElement("span");
-      if (c === " ") {
-        s.className = "sp";
-      } else {
-        s.className = "ch";
-        s.style.setProperty("--d", (0.72 + i * 0.045) + "s");
-        i++;
-      }
-      s.textContent = c === " " ? "\u00A0" : c;
-      wm.appendChild(s);
-    });
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () { wm.classList.add("settled"); });
-    });
   }
 
   /* --- 3. Entrada n'A Sala (ainda não implementada) --- */
