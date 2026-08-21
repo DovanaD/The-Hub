@@ -300,21 +300,32 @@
   }
   .sala-enter:not(:disabled):active .sala-enter-photo { transform: translateY(0); }
   .sala-enter:disabled .sala-enter-photo { opacity: 0.88; }
-  .org-card { display: flex; gap: 1.15rem; align-items: flex-start; margin-bottom: 1.5rem; }
-  .org-photo {
-    flex: 0 0 92px; width: 92px; height: 92px;
+  /* ============ ORGANIZADOR ============ */
+  .org-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    margin-bottom: 1.75rem;
+  }
+  .org-photo-real {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin: 0 auto;
     border: 1px solid var(--rule);
-    display: grid; place-items: center;
   }
-  .org-photo span {
+  .org-body p + p { margin-top: 0.7rem; }
+  .org-body em { font-style: italic; }
+  .org-name {
     font-family: var(--sans);
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink-2);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.7rem;
   }
-  .org-name { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
-  .org-bio { color: var(--ink-2); font-size: 0.95rem; font-style: italic; }
 
   .org-links {
     list-style: none;
@@ -361,6 +372,19 @@
     grid-template-columns: subgrid;
   }
   .foot > * { grid-column: content-start / content-end; }
+
+  .sales-link {
+    display: inline-block;
+    color: var(--ink-2);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .sales-link:hover {
+    color: var(--ink);
+    border-bottom-color: var(--glass);
+  }
 
   /* ============ FOCO / A11Y ============ */
   a:focus-visible, button:focus-visible {
@@ -532,11 +556,13 @@
   <!-- ===== ORGANIZADOR ===== -->
   <section class="band band--tone">
     <h2 class="eyebrow">organizador responsável</h2>
-    <div class="org-card">
-      <div class="org-photo"><span>foto</span></div>
-      <div>
-        <p class="org-name">Matheus Veras Prado</p>
-        <p class="org-bio">[descrição]</p>
+    <div class="org-block">
+      <img class="org-photo-real" src="matt.jpg" alt="Foto de Matt Prado" width="600" height="600" loading="lazy" />
+      <div class="org-body">
+        <p class="org-name">Matt Prado</p>
+        <p>Matt fala 10 línguas, 6 fluentemente. E tão importante quanto isso, é um aprendiz como você (aprendendo Hindi).</p>
+        <p>Com 15 anos de experiência em lecionar, formação na USP, Uni-Hamburg (Alemanha) e Cambridge (CELTA), percebeu que o que mais impede alunos de falar uma língua nova é <em>parar os estudos</em>.</p>
+        <p>Esse projeto é então um empreendimento para criar uma estrutura nova, onde a língua está acessível para quem já tem todos os recursos menos um: a constância natural em um grupo comprometido.</p>
       </div>
     </div>
     <ul class="org-links">
@@ -548,7 +574,9 @@
     </ul>
   </section>
 
-  <footer class="foot"><span>THE HUB</span></footer>
+  <footer class="foot">
+    <a href="#" class="sales-link">área de vendas</a>
+  </footer>
 
 </main>
 
