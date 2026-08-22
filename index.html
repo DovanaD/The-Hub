@@ -373,17 +373,69 @@
   }
   .foot > * { grid-column: content-start / content-end; }
 
-  .sales-link {
-    display: inline-block;
-    color: var(--ink-2);
-    text-decoration: none;
-    padding: 0.4rem 0;
-    border-bottom: 1px solid transparent;
-    transition: color .2s ease, border-color .2s ease;
+  /* ============ ÁREA DE VENDAS ============ */
+  /* Abertura: separa visualmente o institucional da argumentação de venda */
+  .sales-open {
+    border-top: 2px solid var(--ink);
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+    text-align: center;
   }
-  .sales-link:hover {
+  .sales-kicker {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--glass);
+    margin-bottom: 0.9rem;
+  }
+  .sales-title {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(1.7rem, 6.5vw, 2.4rem);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
     color: var(--ink);
-    border-bottom-color: var(--glass);
+  }
+
+  .sale-q {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(1.15rem, 4.5vw, 1.4rem);
+    line-height: 1.25;
+    letter-spacing: 0.005em;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+  }
+  .sale p + p { margin-top: 0.9rem; }
+  .sale em { font-style: italic; }
+
+  .sale-quote {
+    margin: 1.4rem 0;
+    padding: 0.4rem 0 0.4rem 1.4rem;
+    border-left: 2px solid var(--glass);
+  }
+  .sale-quote p {
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .sale-quote cite {
+    display: block;
+    margin-top: 0.7rem;
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+  }
+
+  .sale-signoff {
+    margin-top: 1.2rem !important;
+    font-style: italic;
+    color: var(--glass);
   }
 
   /* ============ FOCO / A11Y ============ */
@@ -574,8 +626,60 @@
     </ul>
   </section>
 
+  <!-- ========================================================= -->
+  <!-- ============  ÁREA DE VENDAS  ============================ -->
+  <!-- ========================================================= -->
+
+  <section class="band sales-open" id="vendas">
+    <p class="sales-kicker">área de vendas</p>
+    <h2 class="sales-title">Por que entrar agora</h2>
+  </section>
+
+  <section class="band sale">
+    <h3 class="sale-q">Por que inglês?</h3>
+    <p>Você já conhece os benefícios: acesso ao mundo. Seja por você conhecer melhor o mundo ou pelo mundo reconhecer melhor você.</p>
+    <p>Mas o THE HUB é mais que ensinar inglês. O que oferecemos é participar de um grupo de pessoas igualmente comprometidas como você. Pessoas que são competentes como você, entendem você, agora trabalhando juntas.</p>
+  </section>
+
+  <section class="band sale band--tone">
+    <h3 class="sale-q">Por que agora?</h3>
+    <p>Porque as janelas estão se fechando.</p>
+    <p>Sabe, li correspondências de meu trisavô John Ulic Burke falando do Brasil para seus parentes nos EUA em ~1928:</p>
+    <blockquote class="sale-quote">
+      <p>"olhamos [no Brasil] para um período de desenvolvimento por muito tempo, e numa escala que se rivalizará com os <em>hey-days</em> dos U.S.A… Os brasileiros têm em sua… natureza criar um país que talvez sirva bem como modelo para futuras gerações"</p>
+      <cite>John Ulic Burke, c. 1928</cite>
+    </blockquote>
+    <p>Isso parece com o seu Brasil hoje?</p>
+    <p>As janelas para oportunidades hoje estão se fechando, e não abrindo. Esta é a chance que temos de nos posicionarmos favoravelmente e usar essa posição para criar um espaço saudável e protetor para as próximas gerações.</p>
+  </section>
+
+  <section class="band sale">
+    <h3 class="sale-q">Por que aulas online em grupo?</h3>
+    <p>Online te dá a oportunidade de encontrar afins mesmo à distância. Pessoas com o perfil do THE HUB não são fáceis de encontrar, e online é um formato em que podemos convergir. Além, claro, da conveniência já conhecida.</p>
+  </section>
+
+  <section class="band sale band--tone">
+    <h3 class="sale-q">Por que o THE HUB?</h3>
+    <p>Pela convergência de aprendizes, pela qualidade dos professores, e pela estrutura de permanência dos estudos.</p>
+    <p>Existem muitos bons métodos, mas <em>todos</em> precisam de permanência até alcançar o objetivo. E nisso te ajudamos.</p>
+  </section>
+
+  <section class="band sale">
+    <h3 class="sale-q">Por que aulas em grupo e não individuais?</h3>
+    <p>Um grupo apoia a permanência, cria variedade de estímulo (não só a voz e a cadência do professor), e com os laços cria um <em>espaço</em> de experiência que será nossa plataforma para projetos maiores.</p>
+  </section>
+
+  <section class="band sale band--tone">
+    <h3 class="sale-q">Por que investir dinheiro?</h3>
+    <p>Existem muitas opções que custam menos, ou até gratuitas. A diferença é: elas te levam o caminho <em>inteiro</em> até seu objetivo?</p>
+    <p>Conduzir uma reunião em inglês precisa de muito tempo de prática, e acumular tempo de prática precisa de permanência. O problema não é acesso ao inglês, o problema é permanência com o inglês.</p>
+    <p>Alcançar um objetivo assim não acontece em 3 semanas empolgadas, e sim em meses ou anos de estudo consistente.</p>
+    <p>Estudar sozinho é possível mas nem sempre plausível. Para que correr o risco de tentar sozinho e postergar <em>mais um ano</em> aprender inglês, se você pode participar agora mesmo de um grupo competente e comprometido? Chegar no final do ano e riscar uma meta ao invés de fazer uma promessa.</p>
+    <p class="sale-signoff">Inclusive, estaremos lá com você :)</p>
+  </section>
+
   <footer class="foot">
-    <a href="#" class="sales-link">área de vendas</a>
+    <span>THE HUB</span>
   </footer>
 
 </main>
