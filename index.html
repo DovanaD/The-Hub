@@ -16,7 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
 
 <script>document.documentElement.className += " js";</script>
 
@@ -230,76 +230,6 @@
     margin-bottom: 0.35rem;
   }
 
-  /* ============ SALA -- foto que É o botão ============ */
-  .sala-enter {
-    display: block;
-    width: 100%;
-    margin: 1.75rem 0 0.5rem;
-    padding: 0;
-    background: transparent;
-    border: 0;
-    color: inherit;
-    font: inherit;
-    text-align: left;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .sala-enter:disabled { cursor: not-allowed; }
-
-  .sala-enter-photo {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    background: var(--ink);
-    color: var(--paper);
-    border: 1px solid var(--ink);
-    position: relative;
-    overflow: hidden;
-    transition: transform .28s cubic-bezier(.4,0,.2,1), box-shadow .3s ease;
-  }
-  .sala-enter-photo > span {
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--paper);
-    opacity: 0.55;
-  }
-
-  /* Rótulo abaixo da foto: convite explícito */
-  .sala-enter-label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
-    margin-top: 0.9rem;
-    text-align: center;
-  }
-  .sala-enter-cta {
-    font-family: var(--sans);
-    font-size: 0.98rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
-  .sala-enter-note {
-    font-family: var(--sans);
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-  }
-
-  /* Interação: hover só quando não estiver disabled */
-  .sala-enter:not(:disabled):hover .sala-enter-photo {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px -14px rgba(31, 95, 107, 0.5);
-  }
-  .sala-enter:not(:disabled):active .sala-enter-photo { transform: translateY(0); }
-  .sala-enter:disabled .sala-enter-photo { opacity: 0.88; }
   /* ============ ORGANIZADOR ============ */
   .org-block {
     display: flex;
@@ -374,30 +304,7 @@
   .foot > * { grid-column: content-start / content-end; }
 
   /* ============ ÁREA DE VENDAS ============ */
-  /* Abertura: separa visualmente o institucional da argumentação de venda */
-  .sales-open {
-    border-top: 2px solid var(--ink);
-    padding-top: 3rem;
-    padding-bottom: 1.5rem;
-    text-align: center;
-  }
-  .sales-kicker {
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.26em;
-    text-transform: uppercase;
-    color: var(--glass);
-    margin-bottom: 0.9rem;
-  }
-  .sales-title {
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: clamp(1.7rem, 6.5vw, 2.4rem);
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    color: var(--ink);
-  }
+  .sale-first { border-top: 2px solid var(--ink); padding-top: 3rem; }
 
   .sale-q {
     font-family: var(--sans);
@@ -436,6 +343,43 @@
     margin-top: 1.2rem !important;
     font-style: italic;
     color: var(--glass);
+  }
+
+  /* Assinatura: como se estivesse escrita à mão sobre o papel do site,
+     sem caixa nem destaque -- o fundo é o próprio papel. */
+  .signature {
+    font-family: "Caveat", "Segoe Script", cursive;
+    font-style: normal;
+    font-size: 1.9rem;
+    line-height: 1;
+    color: var(--ink);
+    margin-left: 0.5rem;
+    vertical-align: -0.15em;
+  }
+
+  /* Bloco Entre em contato */
+  .wa-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.7rem 1.3rem 0.7rem 1rem;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    transition: background .25s ease, color .25s ease;
+  }
+  .wa-link:hover { background: var(--ink); color: var(--paper); }
+  .wa-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: currentColor;
+    flex: 0 0 auto;
   }
 
   /* ============ FOCO / A11Y ============ */
@@ -505,7 +449,6 @@
   <section class="band">
     <p>Não falta método para aprender uma nova língua.</p>
     <p><strong>Mas implementar é outra história.</strong></p>
-    <p>Não falta tempo (10min/dia seria suficiente para avançar) falta mesmo é <em>a energia extra</em>.</p>
   </section>
 
   <!-- ===== A GENTE SE APOIA ===== -->
@@ -583,26 +526,11 @@
 
   <!-- ===== O OBJETIVO ===== -->
   <section class="band band--tone">
-    <h2 class="eyebrow">o objetivo</h2>
+    <h2 class="eyebrow">por que esta arquitetura?</h2>
     <p>É você <em>falar</em> inglês, e rápido.</p>
     <p>THE HUB é organizado pelo professor Matt Prado, falante de 10 línguas (6 fluentes) com 15 anos de experiência em dar aulas, e as aulas são feitas para conversação.</p>
     <p>O objetivo individual é tecido para você e por você especificamente, o que faz com que pequenos ganhos linguísticos se convertam em grandes ganhos em performance final.</p>
     <p>Com a energia extra e o apoio coletivo, se prepare para se surpreender com a velocidade do seu aprendizado.</p>
-  </section>
-
-  <!-- ===== A SALA ===== -->
-  <section class="band">
-    <h2 class="eyebrow">a sala</h2>
-    <p>Esta é a Sala, nosso espaço conjunto de estar. Entra, dá uma olhada.</p>
-    <p>Cada aprendiz pode fazer mudanças na Sala, para dar a nossa cara e ajudar outros aprendizes. A Sala é onde convergimos.</p>
-
-    <button class="sala-enter" disabled aria-disabled="true" aria-label="Entrar na Sala (em breve)">
-      <span class="sala-enter-photo"><span>foto da Sala</span></span>
-      <span class="sala-enter-label">
-        <span class="sala-enter-cta">entrar na Sala</span>
-        <span class="sala-enter-note">em breve</span>
-      </span>
-    </button>
   </section>
 
   <!-- ===== ORGANIZADOR ===== -->
@@ -618,11 +546,7 @@
       </div>
     </div>
     <ul class="org-links">
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">LinkedIn</a></li>
-      <li><a href="#">YouTube</a></li>
-      <li><a href="#">TikTok</a></li>
-      <li><a href="#">WhatsApp</a></li>
+      <li><a href="https://www.linkedin.com/in/matheus-véras-prado-33223835?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></li>
     </ul>
   </section>
 
@@ -630,21 +554,17 @@
   <!-- ============  ÁREA DE VENDAS  ============================ -->
   <!-- ========================================================= -->
 
-  <section class="band sales-open" id="vendas">
-    <p class="sales-kicker">área de vendas</p>
-    <h2 class="sales-title">Por que entrar agora</h2>
-  </section>
-
-  <section class="band sale">
+  <section class="band sale sale-first">
     <h3 class="sale-q">Por que inglês?</h3>
-    <p>Você já conhece os benefícios: acesso ao mundo. Seja por você conhecer melhor o mundo ou pelo mundo reconhecer melhor você.</p>
-    <p>Mas o THE HUB é mais que ensinar inglês. O que oferecemos é participar de um grupo de pessoas igualmente comprometidas como você. Pessoas que são competentes como você, entendem você, agora trabalhando juntas.</p>
+    <p>Você já conhece os benefícios: acesso ao mundo.</p>
+    <p>Seja por você conhecer melhor o mundo ou pelo mundo reconhecer melhor você.</p>
+    <p>Mas o THE HUB é mais que ensinar inglês. O que oferecemos é participar de um grupo de pessoas igualmente comprometidas como você. Pessoas que são competentes como você, que entendem você, comprometidas como você, agora trabalhando juntas.</p>
   </section>
 
   <section class="band sale band--tone">
     <h3 class="sale-q">Por que agora?</h3>
     <p>Porque as janelas estão se fechando.</p>
-    <p>Sabe, li correspondências de meu trisavô John Ulic Burke falando do Brasil para seus parentes nos EUA em ~1928:</p>
+    <p>Sabe, li correspondências de meu trisavô John Ulic Burke falando do Brasil para seus parentes nos EUA em c. 1928:</p>
     <blockquote class="sale-quote">
       <p>"olhamos [no Brasil] para um período de desenvolvimento por muito tempo, e numa escala que se rivalizará com os <em>hey-days</em> dos U.S.A… Os brasileiros têm em sua… natureza criar um país que talvez sirva bem como modelo para futuras gerações"</p>
       <cite>John Ulic Burke, c. 1928</cite>
@@ -675,7 +595,17 @@
     <p>Conduzir uma reunião em inglês precisa de muito tempo de prática, e acumular tempo de prática precisa de permanência. O problema não é acesso ao inglês, o problema é permanência com o inglês.</p>
     <p>Alcançar um objetivo assim não acontece em 3 semanas empolgadas, e sim em meses ou anos de estudo consistente.</p>
     <p>Estudar sozinho é possível mas nem sempre plausível. Para que correr o risco de tentar sozinho e postergar <em>mais um ano</em> aprender inglês, se você pode participar agora mesmo de um grupo competente e comprometido? Chegar no final do ano e riscar uma meta ao invés de fazer uma promessa.</p>
-    <p class="sale-signoff">Inclusive, estaremos lá com você :)</p>
+    <p class="sale-signoff">Inclusive, estaremos lá com você :) <span class="signature">Matt</span></p>
+  </section>
+
+  <section class="band contato band--tone">
+    <h3 class="sale-q">Entre em contato</h3>
+    <a class="wa-link" href="https://wa.me/5511997002890" target="_blank" rel="noopener">
+      <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M16.04 4C9.94 4 5 8.94 5 15.04c0 2.13.6 4.12 1.64 5.82L5 28l7.32-1.6a11 11 0 0 0 3.72.66h.01c6.1 0 11.04-4.94 11.04-11.04C27.09 8.94 22.14 4 16.04 4zm0 20.2c-1.17 0-2.32-.24-3.38-.7l-.24-.1-4.35.95.93-4.24-.16-.26a9.16 9.16 0 0 1-1.4-4.86c0-5.07 4.13-9.2 9.2-9.2 2.46 0 4.77.96 6.5 2.7a9.13 9.13 0 0 1 2.7 6.5c0 5.07-4.13 9.2-9.2 9.2zm5.05-6.89c-.28-.14-1.63-.8-1.89-.9-.25-.09-.44-.14-.62.14-.18.28-.71.9-.87 1.08-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.22-1.37-.82-.73-1.37-1.64-1.53-1.92-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.49.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.73.35-.25.28-.96.94-.96 2.3s.98 2.66 1.12 2.85c.14.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.58.66.21 1.25.18 1.72.11.53-.08 1.63-.67 1.86-1.31.23-.64.23-1.19.16-1.31-.07-.12-.25-.19-.53-.33z"/>
+      </svg>
+      <span>WhatsApp</span>
+    </a>
   </section>
 
   <footer class="foot">
@@ -709,15 +639,6 @@
     });
   } else if (svg) {
     svg.classList.add("drawn");
-  }
-
-  /* --- 3. Entrada n'A Sala (ainda não implementada) --- */
-  var btn = document.querySelector(".sala-enter");
-  if (btn) {
-    btn.addEventListener("click", function () {
-      if (btn.disabled) return;
-      // window.location.href = "/sala";
-    });
   }
 })();
 </script>
