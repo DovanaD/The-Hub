@@ -16,7 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet" />
 
 <script>document.documentElement.className += " js";</script>
 
@@ -345,42 +345,68 @@
     color: var(--glass);
   }
 
-  /* Assinatura: como se estivesse escrita à mão sobre o papel do site,
-     sem caixa nem destaque -- o fundo é o próprio papel. */
-  .signature {
-    font-family: "Caveat", "Segoe Script", cursive;
-    font-style: normal;
-    font-size: 1.9rem;
-    line-height: 1;
-    color: var(--ink);
-    margin-left: 0.5rem;
-    vertical-align: -0.15em;
+  /* Assinatura à mão sobre o papel do site -- sem caixa, sem destaque.
+     Deslocada um pouco para baixo e para a esquerda. */
+  .signature-img {
+    display: block;
+    width: clamp(150px, 44vw, 210px);
+    height: auto;
+    margin: 0.6rem 0 0 -0.4rem;
+    opacity: 0.92;
   }
 
-  /* Bloco Entre em contato */
+  /* ============ CONTATO ============ */
+  .contato-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin-top: 0.6rem;
+  }
+
+  /* WhatsApp: verde da marca, um pouco dessaturado para não gritar */
   .wa-link {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    margin-top: 0.4rem;
-    color: var(--ink);
+    color: #fff;
     text-decoration: none;
     font-family: var(--sans);
     font-size: 1rem;
     font-weight: 600;
     letter-spacing: 0.02em;
-    padding: 0.7rem 1.3rem 0.7rem 1rem;
-    border: 1px solid var(--ink);
+    padding: 0.8rem 1.6rem 0.8rem 1.25rem;
+    background: #3a9d6e;
+    border: 1px solid #3a9d6e;
     border-radius: 999px;
-    transition: background .25s ease, color .25s ease;
+    transition: background .25s ease, border-color .25s ease;
   }
-  .wa-link:hover { background: var(--ink); color: var(--paper); }
-  .wa-icon {
-    width: 1.4rem;
-    height: 1.4rem;
-    fill: currentColor;
-    flex: 0 0 auto;
+  .wa-link:hover { background: #338c62; border-color: #338c62; }
+  .wa-icon { width: 1.4rem; height: 1.4rem; fill: currentColor; flex: 0 0 auto; }
+
+  /* LinkedIn: barra quase retangular (cantos levemente arredondados),
+     ~60% da largura do WhatsApp e ~30% mais fina. */
+  .li-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    width: 60%;
+    min-width: 140px;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    transition: border-color .25s ease, color .25s ease;
   }
+  .li-link:hover { border-color: var(--ink); }
+  .li-icon { width: 1.05rem; height: 1.05rem; fill: currentColor; flex: 0 0 auto; }
 
   /* ============ FOCO / A11Y ============ */
   a:focus-visible, button:focus-visible {
@@ -555,7 +581,7 @@
   <!-- ========================================================= -->
 
   <section class="band sale sale-first">
-    <h3 class="sale-q">Por que inglês?</h3>
+    <h3 class="sale-q">Por que aprender inglês?</h3>
     <p>Você já conhece os benefícios: acesso ao mundo.</p>
     <p>Seja por você conhecer melhor o mundo ou pelo mundo reconhecer melhor você.</p>
     <p>Mas o THE HUB é mais que ensinar inglês. O que oferecemos é participar de um grupo de pessoas igualmente comprometidas como você. Pessoas que são competentes como você, que entendem você, comprometidas como você, agora trabalhando juntas.</p>
@@ -595,17 +621,26 @@
     <p>Conduzir uma reunião em inglês precisa de muito tempo de prática, e acumular tempo de prática precisa de permanência. O problema não é acesso ao inglês, o problema é permanência com o inglês.</p>
     <p>Alcançar um objetivo assim não acontece em 3 semanas empolgadas, e sim em meses ou anos de estudo consistente.</p>
     <p>Estudar sozinho é possível mas nem sempre plausível. Para que correr o risco de tentar sozinho e postergar <em>mais um ano</em> aprender inglês, se você pode participar agora mesmo de um grupo competente e comprometido? Chegar no final do ano e riscar uma meta ao invés de fazer uma promessa.</p>
-    <p class="sale-signoff">Inclusive, estaremos lá com você :) <span class="signature">Matt</span></p>
+    <p class="sale-signoff">Inclusive, estaremos lá com você :)</p>
+    <img class="signature-img" src="signature.png" alt="Assinatura de Matt Prado" width="676" height="554" loading="lazy" />
   </section>
 
   <section class="band contato band--tone">
     <h3 class="sale-q">Entre em contato</h3>
-    <a class="wa-link" href="https://wa.me/5511997002890" target="_blank" rel="noopener">
-      <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M16.04 4C9.94 4 5 8.94 5 15.04c0 2.13.6 4.12 1.64 5.82L5 28l7.32-1.6a11 11 0 0 0 3.72.66h.01c6.1 0 11.04-4.94 11.04-11.04C27.09 8.94 22.14 4 16.04 4zm0 20.2c-1.17 0-2.32-.24-3.38-.7l-.24-.1-4.35.95.93-4.24-.16-.26a9.16 9.16 0 0 1-1.4-4.86c0-5.07 4.13-9.2 9.2-9.2 2.46 0 4.77.96 6.5 2.7a9.13 9.13 0 0 1 2.7 6.5c0 5.07-4.13 9.2-9.2 9.2zm5.05-6.89c-.28-.14-1.63-.8-1.89-.9-.25-.09-.44-.14-.62.14-.18.28-.71.9-.87 1.08-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.22-1.37-.82-.73-1.37-1.64-1.53-1.92-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.49.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.73.35-.25.28-.96.94-.96 2.3s.98 2.66 1.12 2.85c.14.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.58.66.21 1.25.18 1.72.11.53-.08 1.63-.67 1.86-1.31.23-.64.23-1.19.16-1.31-.07-.12-.25-.19-.53-.33z"/>
-      </svg>
-      <span>WhatsApp</span>
-    </a>
+    <div class="contato-links">
+      <a class="wa-link" href="https://wa.me/5511997002890" target="_blank" rel="noopener">
+        <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M16.04 4C9.94 4 5 8.94 5 15.04c0 2.13.6 4.12 1.64 5.82L5 28l7.32-1.6a11 11 0 0 0 3.72.66h.01c6.1 0 11.04-4.94 11.04-11.04C27.09 8.94 22.14 4 16.04 4zm0 20.2c-1.17 0-2.32-.24-3.38-.7l-.24-.1-4.35.95.93-4.24-.16-.26a9.16 9.16 0 0 1-1.4-4.86c0-5.07 4.13-9.2 9.2-9.2 2.46 0 4.77.96 6.5 2.7a9.13 9.13 0 0 1 2.7 6.5c0 5.07-4.13 9.2-9.2 9.2zm5.05-6.89c-.28-.14-1.63-.8-1.89-.9-.25-.09-.44-.14-.62.14-.18.28-.71.9-.87 1.08-.16.18-.32.2-.6.07-.28-.14-1.17-.43-2.22-1.37-.82-.73-1.37-1.64-1.53-1.92-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.49.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.73.35-.25.28-.96.94-.96 2.3s.98 2.66 1.12 2.85c.14.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.58.66.21 1.25.18 1.72.11.53-.08 1.63-.67 1.86-1.31.23-.64.23-1.19.16-1.31-.07-.12-.25-.19-.53-.33z"/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+      <a class="li-link" href="https://www.linkedin.com/in/matheus-véras-prado-33223835?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">
+        <svg class="li-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M27 27h-4.4v-6.9c0-1.64-.03-3.75-2.28-3.75-2.29 0-2.64 1.79-2.64 3.63V27h-4.4V12.5h4.22v1.98h.06c.59-1.11 2.02-2.28 4.16-2.28 4.45 0 5.27 2.93 5.27 6.74V27zM8.09 10.52a2.55 2.55 0 1 1 0-5.1 2.55 2.55 0 0 1 0 5.1zM10.29 27H5.89V12.5h4.4V27z"/>
+        </svg>
+        <span>LinkedIn</span>
+      </a>
+    </div>
   </section>
 
   <footer class="foot">
