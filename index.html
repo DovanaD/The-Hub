@@ -367,12 +367,12 @@
   .contato-links {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.7rem;
     margin-top: 0.6rem;
   }
 
-  /* WhatsApp: verde da marca, um pouco dessaturado para não gritar */
+  /* WhatsApp: verde vivo da marca, com leve destaque -- o botão principal */
   .wa-link {
     display: inline-flex;
     align-items: center;
@@ -380,17 +380,23 @@
     color: #fff;
     text-decoration: none;
     font-family: var(--sans);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
     letter-spacing: 0.02em;
-    padding: 0.8rem 1.6rem 0.8rem 1.25rem;
-    background: #25a95e;
-    border: 1px solid #25a95e;
+    padding: 0.95rem 2rem 0.95rem 1.6rem;
+    background: #25d366;
+    border: 1px solid #25d366;
     border-radius: 999px;
-    transition: background .25s ease, border-color .25s ease;
+    box-shadow: 0 6px 18px -6px rgba(37, 211, 102, 0.55);
+    transition: background .25s ease, border-color .25s ease, transform .2s ease, box-shadow .25s ease;
   }
-  .wa-link:hover { background: #1f9152; border-color: #1f9152; }
-  .wa-icon { width: 1.4rem; height: 1.4rem; fill: currentColor; flex: 0 0 auto; }
+  .wa-link:hover {
+    background: #1ebd5b;
+    border-color: #1ebd5b;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px -8px rgba(37, 211, 102, 0.6);
+  }
+  .wa-icon { width: 1.5rem; height: 1.5rem; fill: currentColor; flex: 0 0 auto; }
 
   /* LinkedIn: mesmo tamanho e formato do WhatsApp, em azul da marca */
   .li-link {
@@ -620,7 +626,7 @@
     <p data-pt="Porque as janelas estão se fechando." data-en="Because the windows are closing.">Porque as janelas estão se fechando.</p>
     <p data-pt="Sabe, li correspondências de meu trisavô John Ulic Burke falando do Brasil para seus parentes nos EUA em c. 1928:" data-en="I once read letters from my great-great-grandfather John Ulic Burke writing about Brazil to his relatives in the USA, c. 1928:">Sabe, li correspondências de meu trisavô John Ulic Burke falando do Brasil para seus parentes nos EUA em c. 1928:</p>
     <blockquote class="sale-quote">
-      <p data-pt=""olhamos [no Brasil] para um período de desenvolvimento por muito tempo, e numa escala que se rivalizará com os <em>hey-days</em> dos U.S.A… Os brasileiros têm em sua… natureza criar um país que talvez sirva bem como modelo para futuras gerações"" data-en=""we look [in Brazil] toward a period of development for a long time to come, and on a scale that will rival the <em>hey-days</em> of the U.S.A… Brazilians have in their… nature the making of a country that may well serve as a model for future generations"">"olhamos [no Brasil] para um período de desenvolvimento por muito tempo, e numa escala que se rivalizará com os <em>hey-days</em> dos U.S.A… Os brasileiros têm em sua… natureza criar um país que talvez sirva bem como modelo para futuras gerações"</p>
+      <p data-pt=""olhamos [no Brasil] para um período de desenvolvimento por muito tempo, e numa escala que se rivalizará com os &quot;hey-days&quot; dos U.S.A… Os brasileiros têm em sua… natureza criar um país que talvez sirva bem como modelo para futuras gerações"" data-en=""we look [in Brazil] toward a period of development for a long time to come, and on a scale that will rival the &quot;hey-days&quot; of the U.S.A… Brazilians have in their… nature the making of a country that may well serve as a model for future generations"">"olhamos [no Brasil] para um período de desenvolvimento por muito tempo, e numa escala que se rivalizará com os "hey-days" dos U.S.A… Os brasileiros têm em sua… natureza criar um país que talvez sirva bem como modelo para futuras gerações"</p>
       <cite data-pt="John Ulic Burke, c. 1928" data-en="John Ulic Burke, c. 1928">John Ulic Burke, c. 1928</cite>
     </blockquote>
     <p data-pt="Isso parece com o seu Brasil hoje?" data-en="Does that sound like the Brazil you know today?">Isso parece com o seu Brasil hoje?</p>
