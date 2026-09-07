@@ -412,6 +412,33 @@
   .li-link:hover { background: #375f85; border-color: #375f85; }
   .li-icon { width: 1.4rem; height: 1.4rem; fill: currentColor; flex: 0 0 auto; }
 
+  /* ============ ALTERNADOR DE IDIOMA ============ */
+  .lang-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    background: color-mix(in srgb, var(--paper) 82%, transparent);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .lang-toggle:hover { border-color: var(--ink); }
+  .lang-globe { width: 1.05rem; height: 1.05rem; color: currentColor; flex: 0 0 auto; }
+  .lang-label { line-height: 1; }
+
   /* ============ FOCO / A11Y ============ */
   a:focus-visible, button:focus-visible {
     outline: 2px solid var(--glass);
@@ -435,6 +462,15 @@
 </head>
 <body>
 <main class="wrap">
+
+  <!-- Alternador de idioma -->
+  <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">
+    <svg class="lang-globe" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M3 12h18 M12 2.8c3 3 3 15.4 0 18.4 M12 2.8c-3 3-3 15.4 0 18.4 M5 6.2c3.6 2.2 10.4 2.2 14 0 M5 17.8c3.6-2.2 10.4-2.2 14 0" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    </svg>
+    <span class="lang-label">EN</span>
+  </button>
 
   <!-- ===== HERO ===== -->
   <div class="hero">
@@ -472,98 +508,98 @@
     </div>
 
     <h1 class="title" id="wordmark">THE HUB</h1>
-    <p class="subtitle">Onde Humanos Convergem</p>
+    <p class="subtitle" data-pt="Onde Humanos Convergem" data-en="Where Humans Converge">Onde Humanos Convergem</p>
   </div>
 
   <!-- ===== LEDE ===== -->
   <section class="band">
-    <p>Não falta método para aprender uma nova língua.</p>
-    <p><strong>Mas implementar é outra história.</strong></p>
+    <p data-pt="Não falta método para aprender uma nova língua." data-en="There is no shortage of methods to learn a new language.">Não falta método para aprender uma nova língua.</p>
+    <p data-pt="<strong>Mas implementar é outra história.</strong>" data-en="<strong>But implementing is another story.</strong>"><strong>Mas implementar é outra história.</strong></p>
   </section>
 
   <!-- ===== A GENTE SE APOIA ===== -->
   <section class="band band--tone">
-    <h2 class="eyebrow">a gente se apoia</h2>
+    <h2 class="eyebrow" data-pt="a gente se apoia" data-en="we support each other">a gente se apoia</h2>
     <ul class="tip-list">
       <li>
-        <p>Transformar o inglês em parte da sua rotina. Isso foi o que fez com que, quando eu me mudei para a Irlanda, eu nem estranhasse.</p>
+        <p data-pt="Transformar o inglês em parte da minha rotina. Isso foi o que fez com que, quando eu me mudei para a Irlanda, eu nem estranhasse." data-en="Making English part of my routine. That is what meant that, when I moved to Ireland, it did not even feel strange.">Transformar o inglês em parte da minha rotina. Isso foi o que fez com que, quando eu me mudei para a Irlanda, eu nem estranhasse.</p>
         <span class="tip-by">-- Francisco Vianna</span>
       </li>
       <li>
-        <p>Faça os flashcards no Anki. Foram uma forma de repetir o vocabulário várias vezes e não esquecer.</p>
+        <p data-pt="Faça os flashcards no Anki. Foram uma forma de repetir o vocabulário várias vezes e não esquecer." data-en="Do your flashcards in Anki. They were a way to repeat vocabulary many times and not forget it.">Faça os flashcards no Anki. Foram uma forma de repetir o vocabulário várias vezes e não esquecer.</p>
         <span class="tip-by">-- Livia Chierice</span>
       </li>
       <li>
-        <p>Pergunte cedo. A pergunta que te envergonha hoje é a mesma que dez colegas estão engolindo.</p>
-        <span class="tip-by">-- anônimo</span>
+        <p data-pt="Eu fui de entender 5% para, dependendo do tópico, até 70%. Isso foi graças a assistir vídeos e tentar conversar com pessoas mesmo entendendo pouco." data-en="I went from understanding 5% to, depending on the topic, as much as 70%. That was thanks to watching videos and trying to talk to people even while understanding little.">Eu fui de entender 5% para, dependendo do tópico, até 70%. Isso foi graças a assistir vídeos e tentar conversar com pessoas mesmo entendendo pouco.</p>
+        <span class="tip-by">-- Erica (エリカ)</span>
       </li>
     </ul>
   </section>
 
   <!-- ===== A PROPOSTA ===== -->
   <section class="band">
-    <h2 class="eyebrow">a proposta</h2>
-    <p>O aprendiz precisa de contato constante com a língua, e contato constante custa. O que te oferecemos é estrutura e energia através de um grupo organizado e comprometido.</p>
+    <h2 class="eyebrow" data-pt="a proposta" data-en="the proposal">a proposta</h2>
+    <p data-pt="O aprendiz precisa de contato constante com a língua, e contato constante custa. O que te oferecemos é estrutura e energia através de um grupo organizado e comprometido." data-en="A learner needs constant contact with the language, and constant contact is costly. What we offer is structure and energy through an organized, committed group.">O aprendiz precisa de contato constante com a língua, e contato constante custa. O que te oferecemos é estrutura e energia através de um grupo organizado e comprometido.</p>
 
-    <h3 class="sub-eyebrow">como funciona</h3>
+    <h3 class="sub-eyebrow" data-pt="como funciona" data-en="how it works">como funciona</h3>
 
     <div class="mech">
-      <h4 class="mech-title">Você faz parte de uma Célula</h4>
-      <p>3–5 alunos iniciam o processo de 3 meses juntos, e fazem uma a duas aulas semanalmente.</p>
+      <h4 class="mech-title" data-pt="Você faz parte de uma Célula" data-en="You are part of a Cell">Você faz parte de uma Célula</h4>
+      <p data-pt="3–5 alunos iniciam o processo de 3 meses juntos, e fazem uma a duas aulas semanalmente." data-en="3–5 students begin the 3-month process together, and take one to two classes a week.">3–5 alunos iniciam o processo de 3 meses juntos, e fazem uma a duas aulas semanalmente.</p>
     </div>
 
     <div class="mech">
-      <h4 class="mech-title">Células formam uma Malha</h4>
-      <p>Uma Malha tem 3–5 Células. Uma vez por mês fazemos a Aula de Convergência, em que todos os alunos participam.</p>
+      <h4 class="mech-title" data-pt="Células formam uma Malha" data-en="Cells form a Mesh">Células formam uma Malha</h4>
+      <p data-pt="Uma Malha tem 3–5 Células. Uma vez por mês fazemos a Aula de Convergência, em que todos os alunos participam." data-en="A Mesh has 3–5 Cells. Once a month we hold the Convergence Class, in which every student takes part.">Uma Malha tem 3–5 Células. Uma vez por mês fazemos a Aula de Convergência, em que todos os alunos participam.</p>
     </div>
 
     <div class="mech">
-      <h4 class="mech-title">a Rede se Apoia</h4>
-      <p>Temos um grupo de WhatsApp com todos os alunos. Nesse grupo, os professores enviam de segunda a sexta material de apoio e lembretes para o estudo.</p>
+      <h4 class="mech-title" data-pt="a Rede se Apoia" data-en="the Network supports itself">a Rede se Apoia</h4>
+      <p data-pt="Temos um grupo de WhatsApp com todos os alunos. Nesse grupo, os professores enviam de segunda a sexta material de apoio e lembretes para o estudo." data-en="We have a WhatsApp group with every student. In it, teachers send support material and study reminders from Monday to Friday.">Temos um grupo de WhatsApp com todos os alunos. Nesse grupo, os professores enviam de segunda a sexta material de apoio e lembretes para o estudo.</p>
     </div>
 
     <div class="mech">
-      <h4 class="mech-title">A energia vem do coletivo</h4>
-      <p>No começo do processo de 3 meses, cada aluno define um objetivo individual, e também cada Célula tem um objetivo em comum como grupo.</p>
+      <h4 class="mech-title" data-pt="A energia vem do coletivo" data-en="The energy comes from the collective">A energia vem do coletivo</h4>
+      <p data-pt="No começo do processo de 3 meses, cada aluno define um objetivo individual, e também cada Célula tem um objetivo em comum como grupo." data-en="At the start of the 3-month process, each student sets an individual goal, and each Cell also has a shared goal as a group.">No começo do processo de 3 meses, cada aluno define um objetivo individual, e também cada Célula tem um objetivo em comum como grupo.</p>
     </div>
 
-    <p>E isso só é possível se as aulas forem feitas para <em>você</em>, em um <em>grupo comprometido</em>, trabalhando a <em>longo prazo</em>.</p>
+    <p data-pt="E isso só é possível se as aulas forem feitas para <em>você</em>, em um <em>grupo comprometido</em>, trabalhando a <em>longo prazo</em>." data-en="And this is only possible if the classes are made for <em>you</em>, in a <em>committed group</em>, working over the <em>long term</em>.">E isso só é possível se as aulas forem feitas para <em>você</em>, em um <em>grupo comprometido</em>, trabalhando a <em>longo prazo</em>.</p>
 
-    <h3 class="sub-eyebrow">visão coletiva de longo prazo</h3>
+    <h3 class="sub-eyebrow" data-pt="visão coletiva de longo prazo" data-en="the long-term collective vision">visão coletiva de longo prazo</h3>
 
-    <p>Um grupo de 3–5 pessoas começa junto. O objetivo de cada um é detalhado, junto com preferências, estilos, aptidões e nível atual. O seu objetivo se torna o objetivo do grupo, e vice-versa.</p>
-    <p>Ao final dos 3 meses trabalhando juntos, a Célula apresenta seu projeto às outras Células da Malha, e escolhe se inicia um próximo ciclo.</p>
+    <p data-pt="Um grupo de 3–5 pessoas começa junto. O objetivo de cada um é detalhado, junto com preferências, estilos, aptidões e nível atual. O seu objetivo se torna o objetivo do grupo, e vice-versa." data-en="A group of 3–5 people begins together. Each person's goal is detailed, along with preferences, styles, aptitudes and current level. Your goal becomes the group's goal, and vice versa.">Um grupo de 3–5 pessoas começa junto. O objetivo de cada um é detalhado, junto com preferências, estilos, aptidões e nível atual. O seu objetivo se torna o objetivo do grupo, e vice-versa.</p>
+    <p data-pt="Ao final dos 3 meses trabalhando juntos, a Célula apresenta seu projeto às outras Células da Malha, e escolhe se inicia um próximo ciclo." data-en="At the end of the 3 months working together, the Cell presents its project to the other Cells in the Mesh, and chooses whether to begin a next cycle.">Ao final dos 3 meses trabalhando juntos, a Célula apresenta seu projeto às outras Células da Malha, e escolhe se inicia um próximo ciclo.</p>
 
     <ol class="track">
       <li class="stop">
-        <span class="stop-when">início</span>
-        <p>a Célula se forma</p>
+        <span class="stop-when" data-pt="início" data-en="start">início</span>
+        <p data-pt="a Célula se forma" data-en="the Cell forms">a Célula se forma</p>
       </li>
       <li class="stop">
-        <span class="stop-when">toda semana</span>
-        <p>a Célula se encontra em aulas semanais</p>
+        <span class="stop-when" data-pt="toda semana" data-en="every week">toda semana</span>
+        <p data-pt="a Célula se encontra em aulas semanais" data-en="the Cell meets in weekly classes">a Célula se encontra em aulas semanais</p>
       </li>
       <li class="stop">
-        <span class="stop-when">todo mês</span>
-        <p>Aula de Convergência com toda a Malha</p>
+        <span class="stop-when" data-pt="todo mês" data-en="every month">todo mês</span>
+        <p data-pt="Aula de Convergência com toda a Malha" data-en="Convergence Class with the whole Mesh">Aula de Convergência com toda a Malha</p>
       </li>
       <li class="stop">
-        <span class="stop-when">3 meses</span>
-        <p>a Célula apresenta seu projeto -- e escolhe se inicia próximo ciclo</p>
+        <span class="stop-when" data-pt="3 meses" data-en="3 months">3 meses</span>
+        <p data-pt="a Célula apresenta seu projeto -- e escolhe se inicia próximo ciclo" data-en="the Cell presents its project -- and chooses whether to begin a next cycle">a Célula apresenta seu projeto -- e escolhe se inicia próximo ciclo</p>
       </li>
     </ol>
   </section>
 
   <!-- ===== ORGANIZADOR ===== -->
   <section class="band band--tone">
-    <h2 class="eyebrow">organizador responsável</h2>
+    <h2 class="eyebrow" data-pt="organizador responsável" data-en="who runs it">organizador responsável</h2>
     <div class="org-block">
       <img class="org-photo-real" src="matt.JPG" alt="Foto de Matt Prado" loading="lazy" />
       <div class="org-body">
         <p class="org-name">Matt Prado</p>
-        <p>Matt fala 10 línguas, 6 fluentemente. E tão importante quanto isso, é um aprendiz como você (aprendendo Hindi).</p>
-        <p>Com 15 anos de experiência em lecionar, formação na USP, Uni-Hamburg (Alemanha) e Cambridge (CELTA), percebeu que o que mais impede alunos de falar uma língua nova é <em>parar os estudos</em>.</p>
-        <p>Esse projeto é então um empreendimento para criar uma estrutura nova, onde a língua está acessível para quem já tem todos os recursos menos um: a constância natural em um grupo comprometido.</p>
+        <p data-pt="Matt fala 10 línguas, 6 fluentemente. E tão importante quanto isso, é um aprendiz como você (aprendendo Hindi)." data-en="Matt speaks 10 languages, 6 fluently. And just as importantly, he is a learner like you (currently learning Hindi).">Matt fala 10 línguas, 6 fluentemente. E tão importante quanto isso, é um aprendiz como você (aprendendo Hindi).</p>
+        <p data-pt="Com 15 anos de experiência em lecionar, formação na USP, Uni-Hamburg (Alemanha) e Cambridge (CELTA), percebeu que o que mais impede alunos de falar uma língua nova é <em>parar os estudos</em>." data-en="With 15 years of teaching experience and training at USP, Uni-Hamburg (Germany) and Cambridge (CELTA), he realized that what most keeps students from speaking a new language is <em>stopping their studies</em>.">Com 15 anos de experiência em lecionar, formação na USP, Uni-Hamburg (Alemanha) e Cambridge (CELTA), percebeu que o que mais impede alunos de falar uma língua nova é <em>parar os estudos</em>.</p>
+        <p data-pt="Esse projeto é então um empreendimento para criar uma estrutura nova, onde a língua está acessível para quem já tem todos os recursos menos um: a constância natural em um grupo comprometido." data-en="This project is therefore an effort to build a new structure, where the language is within reach for those who already have every resource but one: natural consistency within a committed group.">Esse projeto é então um empreendimento para criar uma estrutura nova, onde a língua está acessível para quem já tem todos os recursos menos um: a constância natural em um grupo comprometido.</p>
       </div>
     </div>
   </section>
@@ -573,53 +609,53 @@
   <!-- ========================================================= -->
 
   <section class="band sale sale-first">
-    <h3 class="sale-q">Por que aprender inglês?</h3>
-    <p>Você já conhece os benefícios: acesso ao mundo.</p>
-    <p>Seja por você conhecer melhor o mundo ou pelo mundo reconhecer melhor você.</p>
-    <p>Mas o THE HUB é mais que ensinar inglês. O que oferecemos é participar de um grupo de pessoas igualmente comprometidas como você. Pessoas que são competentes como você, que entendem você, comprometidas como você, agora trabalhando juntas.</p>
+    <h3 class="sale-q" data-pt="Por que aprender inglês?" data-en="Why learn English?">Por que aprender inglês?</h3>
+    <p data-pt="Você já conhece os benefícios: acesso ao mundo." data-en="You already know the benefits: access to the world.">Você já conhece os benefícios: acesso ao mundo.</p>
+    <p data-pt="Seja por você conhecer melhor o mundo ou pelo mundo reconhecer melhor você." data-en="Whether by you knowing the world better, or by the world recognizing you better.">Seja por você conhecer melhor o mundo ou pelo mundo reconhecer melhor você.</p>
+    <p data-pt="Mas o THE HUB é mais que ensinar inglês. O que oferecemos é participar de um grupo de pessoas igualmente comprometidas como você. Pessoas que são competentes como você, que entendem você, comprometidas como você, agora trabalhando juntas." data-en="But THE HUB is more than teaching English. What we offer is belonging to a group of people as committed as you are. People who are as capable as you, who understand you, as committed as you, now working together.">Mas o THE HUB é mais que ensinar inglês. O que oferecemos é participar de um grupo de pessoas igualmente comprometidas como você. Pessoas que são competentes como você, que entendem você, comprometidas como você, agora trabalhando juntas.</p>
   </section>
 
   <section class="band sale band--tone">
-    <h3 class="sale-q">Por que agora?</h3>
-    <p>Porque as janelas estão se fechando.</p>
-    <p>Sabe, li correspondências de meu trisavô John Ulic Burke falando do Brasil para seus parentes nos EUA em c. 1928:</p>
+    <h3 class="sale-q" data-pt="Por que agora?" data-en="Why now?">Por que agora?</h3>
+    <p data-pt="Porque as janelas estão se fechando." data-en="Because the windows are closing.">Porque as janelas estão se fechando.</p>
+    <p data-pt="Sabe, li correspondências de meu trisavô John Ulic Burke falando do Brasil para seus parentes nos EUA em c. 1928:" data-en="I once read letters from my great-great-grandfather John Ulic Burke writing about Brazil to his relatives in the USA, c. 1928:">Sabe, li correspondências de meu trisavô John Ulic Burke falando do Brasil para seus parentes nos EUA em c. 1928:</p>
     <blockquote class="sale-quote">
-      <p>"olhamos [no Brasil] para um período de desenvolvimento por muito tempo, e numa escala que se rivalizará com os <em>hey-days</em> dos U.S.A… Os brasileiros têm em sua… natureza criar um país que talvez sirva bem como modelo para futuras gerações"</p>
-      <cite>John Ulic Burke, c. 1928</cite>
+      <p data-pt=""olhamos [no Brasil] para um período de desenvolvimento por muito tempo, e numa escala que se rivalizará com os <em>hey-days</em> dos U.S.A… Os brasileiros têm em sua… natureza criar um país que talvez sirva bem como modelo para futuras gerações"" data-en=""we look [in Brazil] toward a period of development for a long time to come, and on a scale that will rival the <em>hey-days</em> of the U.S.A… Brazilians have in their… nature the making of a country that may well serve as a model for future generations"">"olhamos [no Brasil] para um período de desenvolvimento por muito tempo, e numa escala que se rivalizará com os <em>hey-days</em> dos U.S.A… Os brasileiros têm em sua… natureza criar um país que talvez sirva bem como modelo para futuras gerações"</p>
+      <cite data-pt="John Ulic Burke, c. 1928" data-en="John Ulic Burke, c. 1928">John Ulic Burke, c. 1928</cite>
     </blockquote>
-    <p>Isso parece com o seu Brasil hoje?</p>
-    <p>As janelas para oportunidades hoje estão se fechando, e não abrindo. Esta é a chance que temos de nos posicionarmos favoravelmente e usar essa posição para criar um espaço saudável e protetor para as próximas gerações.</p>
+    <p data-pt="Isso parece com o seu Brasil hoje?" data-en="Does that sound like the Brazil you know today?">Isso parece com o seu Brasil hoje?</p>
+    <p data-pt="As janelas para oportunidades hoje estão se fechando, e não abrindo. Esta é a chance que temos de nos posicionarmos favoravelmente e usar essa posição para criar um espaço saudável e protetor para as próximas gerações." data-en="The windows of opportunity today are closing, not opening. This is our chance to position ourselves well and use that position to build a healthy, protective space for the generations to come.">As janelas para oportunidades hoje estão se fechando, e não abrindo. Esta é a chance que temos de nos posicionarmos favoravelmente e usar essa posição para criar um espaço saudável e protetor para as próximas gerações.</p>
   </section>
 
   <section class="band sale">
-    <h3 class="sale-q">Por que aulas online em grupo?</h3>
-    <p>Online te dá a oportunidade de encontrar afins mesmo à distância. Pessoas com o perfil do THE HUB não são fáceis de encontrar, e online é um formato em que podemos convergir. Além, claro, da conveniência já conhecida.</p>
+    <h3 class="sale-q" data-pt="Por que aulas online em grupo?" data-en="Why online classes, in a group?">Por que aulas online em grupo?</h3>
+    <p data-pt="Online te dá a oportunidade de encontrar afins mesmo à distância. Pessoas com o perfil do THE HUB não são fáceis de encontrar, e online é um formato em que podemos convergir. Além, claro, da conveniência já conhecida." data-en="Online gives you the chance to find kindred people even at a distance. People with THE HUB's profile are not easy to find, and online is a format where we can converge. Beyond, of course, the convenience you already know.">Online te dá a oportunidade de encontrar afins mesmo à distância. Pessoas com o perfil do THE HUB não são fáceis de encontrar, e online é um formato em que podemos convergir. Além, claro, da conveniência já conhecida.</p>
   </section>
 
   <section class="band sale band--tone">
-    <h3 class="sale-q">Por que o THE HUB?</h3>
-    <p>Pela convergência de aprendizes, pela qualidade dos professores, e pela estrutura de permanência dos estudos.</p>
-    <p>Existem muitos bons métodos, mas <em>todos</em> precisam de permanência até alcançar o objetivo. E nisso te ajudamos.</p>
+    <h3 class="sale-q" data-pt="Por que o THE HUB?" data-en="Why THE HUB?">Por que o THE HUB?</h3>
+    <p data-pt="Pela convergência de aprendizes, pela qualidade dos professores, e pela estrutura de permanência dos estudos." data-en="For the convergence of learners, the quality of the teachers, and the structure that keeps studies going.">Pela convergência de aprendizes, pela qualidade dos professores, e pela estrutura de permanência dos estudos.</p>
+    <p data-pt="Existem muitos bons métodos, mas <em>todos</em> precisam de permanência até alcançar o objetivo. E nisso te ajudamos." data-en="There are many good methods, but <em>all</em> of them require staying the course until you reach the goal. And that is where we help.">Existem muitos bons métodos, mas <em>todos</em> precisam de permanência até alcançar o objetivo. E nisso te ajudamos.</p>
   </section>
 
   <section class="band sale">
-    <h3 class="sale-q">Por que aulas em grupo e não individuais?</h3>
-    <p>Um grupo apoia a permanência, cria variedade de estímulo (não só a voz e a cadência do professor), e com os laços cria um <em>espaço</em> de experiência que será nossa plataforma para projetos maiores.</p>
+    <h3 class="sale-q" data-pt="Por que aulas em grupo e não individuais?" data-en="Why group classes and not individual ones?">Por que aulas em grupo e não individuais?</h3>
+    <p data-pt="Um grupo apoia a permanência, cria variedade de estímulo (não só a voz e a cadência do professor), e com os laços cria um <em>espaço</em> de experiência que será nossa plataforma para projetos maiores." data-en="A group sustains consistency, creates a variety of stimulus (not just the teacher's voice and cadence), and through its bonds builds a <em>space</em> of experience that will be our platform for bigger projects.">Um grupo apoia a permanência, cria variedade de estímulo (não só a voz e a cadência do professor), e com os laços cria um <em>espaço</em> de experiência que será nossa plataforma para projetos maiores.</p>
   </section>
 
   <section class="band sale band--tone">
-    <h3 class="sale-q">Por que investir dinheiro?</h3>
-    <p>Existem muitas opções que custam menos, ou até gratuitas. A diferença é: elas te levam o caminho <em>inteiro</em> até seu objetivo?</p>
-    <p>Conduzir uma reunião em inglês precisa de muito tempo de prática, e acumular tempo de prática precisa de permanência. O problema não é acesso ao inglês, o problema é permanência com o inglês.</p>
-    <p>Alcançar um objetivo assim não acontece em 3 semanas empolgadas, e sim em meses ou anos de estudo consistente.</p>
-    <p>Estudar sozinho é possível mas nem sempre plausível. Para que correr o risco de tentar sozinho e postergar <em>mais um ano</em> aprender inglês, se você pode participar agora mesmo de um grupo competente e comprometido? Chegar no final do ano e riscar uma meta ao invés de fazer uma promessa.</p>
-    <p class="sale-signoff">Inclusive, estaremos lá com você :)</p>
+    <h3 class="sale-q" data-pt="Por que investir dinheiro?" data-en="Why invest money?">Por que investir dinheiro?</h3>
+    <p data-pt="Existem muitas opções que custam menos, ou até gratuitas. A diferença é: elas te levam o caminho <em>inteiro</em> até seu objetivo?" data-en="There are many options that cost less, or nothing at all. The difference is: do they carry you the <em>whole</em> way to your goal?">Existem muitas opções que custam menos, ou até gratuitas. A diferença é: elas te levam o caminho <em>inteiro</em> até seu objetivo?</p>
+    <p data-pt="Conduzir uma reunião em inglês precisa de muito tempo de prática, e acumular tempo de prática precisa de permanência. O problema não é acesso ao inglês, o problema é permanência com o inglês." data-en="Leading a meeting in English takes a great deal of practice, and accumulating practice takes consistency. The problem is not access to English; the problem is staying with English.">Conduzir uma reunião em inglês precisa de muito tempo de prática, e acumular tempo de prática precisa de permanência. O problema não é acesso ao inglês, o problema é permanência com o inglês.</p>
+    <p data-pt="Alcançar um objetivo assim não acontece em 3 semanas empolgadas, e sim em meses ou anos de estudo consistente." data-en="Reaching a goal like this does not happen in 3 excited weeks, but in months or years of consistent study.">Alcançar um objetivo assim não acontece em 3 semanas empolgadas, e sim em meses ou anos de estudo consistente.</p>
+    <p data-pt="Estudar sozinho é possível mas nem sempre plausível. Para que correr o risco de tentar sozinho e postergar <em>mais um ano</em> aprender inglês, se você pode participar agora mesmo de um grupo competente e comprometido? Chegar no final do ano e riscar uma meta ao invés de fazer uma promessa." data-en="Studying alone is possible but not always realistic. Why risk going it alone and postpone learning English by <em>one more year</em>, when you could join a capable, committed group right now? Reach the end of the year and cross off a goal instead of making a promise.">Estudar sozinho é possível mas nem sempre plausível. Para que correr o risco de tentar sozinho e postergar <em>mais um ano</em> aprender inglês, se você pode participar agora mesmo de um grupo competente e comprometido? Chegar no final do ano e riscar uma meta ao invés de fazer uma promessa.</p>
+    <p class="sale-signoff" data-pt="Inclusive, estaremos lá com você :)" data-en="And we will be right there with you :)">Inclusive, estaremos lá com você :)</p>
     <img class="signature-img" src="signature.PNG" alt="Assinatura de Matt Prado" loading="lazy" />
     <p class="sign-attr">M. V. Prado</p>
   </section>
 
   <section class="band contato">
-    <h3 class="sale-q">Entre em contato</h3>
+    <h3 class="sale-q" data-pt="Entre em contato" data-en="Get in touch">Entre em contato</h3>
     <div class="contato-links">
       <a class="wa-link" href="https://wa.me/5511997002890" target="_blank" rel="noopener">
         <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -667,6 +703,34 @@
     });
   } else if (svg) {
     svg.classList.add("drawn");
+  }
+
+  /* --- 2. Alternador de idioma PT/EN --- */
+  var LANG_KEY = null; // sem storage em artifacts; estado só em memória
+  var current = "pt";
+  var toggle = document.getElementById("langToggle");
+  var label = toggle ? toggle.querySelector(".lang-label") : null;
+
+  function applyLang(lang) {
+    current = lang;
+    var nodes = document.querySelectorAll("[data-pt][data-en]");
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      var val = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-pt");
+      if (val !== null) el.innerHTML = val;
+    }
+    document.documentElement.setAttribute("lang", lang === "en" ? "en" : "pt-BR");
+    if (label) label.textContent = lang === "en" ? "PT" : "EN";
+    if (toggle) toggle.setAttribute("aria-label", lang === "en" ? "Mudar para português" : "Switch to English");
+    document.title = lang === "en"
+      ? "THE HUB -- Where Humans Converge"
+      : "THE HUB -- Onde Humanos Convergem";
+  }
+
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      applyLang(current === "pt" ? "en" : "pt");
+    });
   }
 })();
 </script>
